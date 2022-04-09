@@ -17,7 +17,7 @@
 		EAEA5B822800B37C00A7AC7C /* WhangTristan_FinalProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B812800B37C00A7AC7C /* WhangTristan_FinalProjectUITests.swift */; };
 		EAEA5B842800B37C00A7AC7C /* WhangTristan_FinalProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B832800B37C00A7AC7C /* WhangTristan_FinalProjectUITestsLaunchTests.swift */; };
 		EAEA5B912800B6BD00A7AC7C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B902800B6BD00A7AC7C /* MapViewController.swift */; };
-		EAEA5B962800B6FF00A7AC7C /* LocationPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B952800B6FF00A7AC7C /* LocationPin.swift */; };
+		EAEA5B962800B6FF00A7AC7C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B952800B6FF00A7AC7C /* Location.swift */; };
 		EAEA5B982800B7DB00A7AC7C /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B972800B7DB00A7AC7C /* RouteModel.swift */; };
 		EAEA5B9A2800B96500A7AC7C /* RouteDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B992800B96500A7AC7C /* RouteDataModel.swift */; };
 /* End PBXBuildFile section */
@@ -54,7 +54,7 @@
 		EAEA5B812800B37C00A7AC7C /* WhangTristan_FinalProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhangTristan_FinalProjectUITests.swift; sourceTree = "<group>"; };
 		EAEA5B832800B37C00A7AC7C /* WhangTristan_FinalProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhangTristan_FinalProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EAEA5B902800B6BD00A7AC7C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		EAEA5B952800B6FF00A7AC7C /* LocationPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPin.swift; sourceTree = "<group>"; };
+		EAEA5B952800B6FF00A7AC7C /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		EAEA5B972800B7DB00A7AC7C /* RouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteModel.swift; sourceTree = "<group>"; };
 		EAEA5B992800B96500A7AC7C /* RouteDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,7 +156,7 @@
 		EAEA5B942800B6DA00A7AC7C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EAEA5B952800B6FF00A7AC7C /* LocationPin.swift */,
+				EAEA5B952800B6FF00A7AC7C /* Location.swift */,
 				EAEA5B972800B7DB00A7AC7C /* RouteModel.swift */,
 				EAEA5B992800B96500A7AC7C /* RouteDataModel.swift */,
 			);
@@ -294,7 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAEA5B962800B6FF00A7AC7C /* LocationPin.swift in Sources */,
+				EAEA5B962800B6FF00A7AC7C /* Location.swift in Sources */,
 				EAEA5B652800B37A00A7AC7C /* ViewController.swift in Sources */,
 				EAEA5B612800B37A00A7AC7C /* AppDelegate.swift in Sources */,
 				EAEA5B982800B7DB00A7AC7C /* RouteModel.swift in Sources */,

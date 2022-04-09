@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import CoreLocation
 
 protocol RouteDataModel {
-    func addPin(lng: Double, lat: Double, hrsSpent: Int, minSpent: Int)
+    func addLocation(lng: Double, lat: Double, hrsSpent: Int, minSpent: Int)
+    func addCorrdinate(coords: CLLocationCoordinate2D)
 }

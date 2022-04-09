@@ -6,19 +6,27 @@
 //
 
 import Foundation
+import CoreLocation
 
 class RouteModel: NSObject, RouteDataModel {
-    var locationPinArray: [LocationPin]
+    
+    
+    var locationArray: [Location]
+    var coordinatesArray: [CLLocationCoordinate2D]
     var date: Date
     
     override init() {
-        self.locationPinArray = []
+        self.coordinatesArray = []
+        self.locationArray = []
         self.date = Date.now
     }
     
-    func addPin(lng: Double, lat: Double, hrsSpent: Int, minSpent: Int) {
-        let pin: LocationPin = LocationPin(lng, lat, hrsSpent, minSpent)
-        locationPinArray.append(pin)
+    func addLocation(lng: Double, lat: Double, hrsSpent: Int, minSpent: Int) {
+        let pin: Location = Location(lng, lat, hrsSpent, minSpent)
+        locationArray.append(pin)
+    }
+    func addCorrdinate(coords: CLLocationCoordinate2D) {
+        coordinatesArray.append(coords)
     }
     
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LocationPin {
+struct Location {
     var longitude: Double
     var latitude: Double
     

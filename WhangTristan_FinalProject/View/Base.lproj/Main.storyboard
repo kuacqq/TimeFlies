@@ -48,10 +48,10 @@
             </objects>
             <point key="canvasLocation" x="-432" y="98"/>
         </scene>
-        <!--View Controller-->
+        <!--Isochrone View Controller-->
         <scene sceneID="qmm-Yv-JL4">
             <objects>
-                <viewController id="h8d-5f-PJv" sceneMemberID="viewController">
+                <viewController id="h8d-5f-PJv" customClass="IsochroneViewController" customModule="WhangTristan_FinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ar8-bV-Pm3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -59,18 +59,19 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Yvk-87-7On">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="h8d-5f-PJv" id="6Yp-Jz-ZdJ"/>
+                                </connections>
                             </mapView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="285-r3-Jk1">
-                                <rect key="frame" x="20" y="44" width="179" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="285-r3-Jk1">
+                                <rect key="frame" x="10" y="54" width="165.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWh-9l-iZn">
-                                <rect key="frame" x="327" y="46" width="67" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWh-9l-iZn">
+                                <rect key="frame" x="269" y="54" width="135" height="31"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Isochrone Button"/>
                                 <connections>
                                     <action selector="buttonDidTapped:" destination="im2-MP-XF8" eventType="touchUpInside" id="ffS-mh-3tB"/>
                                 </connections>
@@ -78,7 +79,18 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Gqt-SE-8Hf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="PWh-9l-iZn" secondAttribute="trailing" constant="10" id="3xV-cU-WxR"/>
+                            <constraint firstItem="285-r3-Jk1" firstAttribute="leading" secondItem="Gqt-SE-8Hf" secondAttribute="leading" constant="10" id="Xel-yW-8a5"/>
+                            <constraint firstItem="285-r3-Jk1" firstAttribute="top" secondItem="Gqt-SE-8Hf" secondAttribute="top" constant="10" id="Ys2-nO-Tny"/>
+                            <constraint firstItem="PWh-9l-iZn" firstAttribute="top" secondItem="Gqt-SE-8Hf" secondAttribute="top" constant="10" id="hRU-4S-fbq"/>
+                            <constraint firstItem="PWh-9l-iZn" firstAttribute="width" secondItem="Ar8-bV-Pm3" secondAttribute="width" multiplier="0.326087" id="pa1-rg-kSX"/>
+                            <constraint firstItem="285-r3-Jk1" firstAttribute="width" secondItem="Ar8-bV-Pm3" secondAttribute="width" multiplier="0.4" id="vcF-ta-cHT"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="isochroneMapView" destination="Yvk-87-7On" id="Wur-pS-pTK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MdF-0g-ncL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="im2-MP-XF8" userLabel="Exit" sceneMemberID="exit"/>

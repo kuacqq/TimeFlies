@@ -50,12 +50,14 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     
     func createPolyLine() {
         print("MapRouteViewController: \(#function)")
+        
         let locations = [
             CLLocationCoordinate2D(latitude: 32.7767, longitude: -96.7970),
             CLLocationCoordinate2D(latitude: 37.7833, longitude: -122.4167),
             CLLocationCoordinate2D(latitude: 42.2814, longitude: -83.7483),
             CLLocationCoordinate2D(latitude: 32.7767, longitude: -96.7970)
         ]
+        print("   Locations: \(locations)")
         
         let polyLine = MKPolyline(coordinates: locations, count: locations.count)
         mapView.addOverlay(polyLine)

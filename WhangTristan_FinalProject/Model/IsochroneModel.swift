@@ -12,8 +12,8 @@ class IsochroneModel {
     
     var ACCESS_KEY = "34acafbe0724fd45d6d83e02cfa92392"
     var APPLICATION_ID = "d9b90531"
-    var ShapeArray: [Shape] = []
-    func getIsochrone(onSuccess: @escaping ([Shape]) -> Void) {
+    var GeometryArray: [Geometry] = []
+    func getIsochrone(onSuccess: @escaping ([Feature]) -> Void) {
         print("IsochroneViewController: \(#function)")
         
         /*
@@ -61,7 +61,7 @@ class IsochroneModel {
                     "type": "driving"
                   },
                   "departure_time": "2021-09-27T08:00:00Z",
-                  "travel_time": 180
+                  "travel_time": 1800
                 }
               ]
             }
@@ -86,24 +86,24 @@ class IsochroneModel {
                 print(error?.localizedDescription ?? "No dat")
                 return
             }
-            let json = String(data: data!, encoding: .utf8)
-            print(json!)
+//            let json = String(data: data!, encoding: .utf8)
+//            print(json!)
             if let data = data {
                 print("   \(#function): Data: \(String(describing:data))")
                 do {
-                    let output = try JSONDecoder().decode(InitialOutput.self, from: data)
-//                    print("   \(#function): result: \(String(describing: output.results))")
-                    print("\(#function): type: \(output.type)")
-//                    let resultsArray = output.geometry
+                    let output = try JSONDecoder().decode(Welcome.self, from: data)
+                    let features = output.features
+                    // do the closure on an array of features and extract all the geometries and nested coordinates.
+                    if !features.isEmpty {
+                        onSuccess(features)
+                    }
                 } catch {
                     print("   caught in 4K!!!!")
                     print(error)
                 }
             }
         }.resume()
-        
-        
-        
+        print("   \(#function): FINISHED")
     }
     
     

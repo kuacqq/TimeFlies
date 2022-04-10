@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
@@ -14,9 +15,10 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     Properties of Map View Controller Class
      */
     var myInitLocation = CLLocationCoordinate2D(latitude: 32.7767, longitude: -96.7970)
-//    let route = RouteModel.shared
-//    let coordinateArray = RouteModel.shared.coordinatesArray
-//    let locationArray = RouteModel.shared.locationArray
+    let locationManager = CLLocationManager()
+    let route = RouteModel.shared
+    let coordinateArray = RouteModel.shared.coordinatesArray
+    let locationArray = RouteModel.shared.locationArray
     
     
     /*
@@ -74,35 +76,35 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     
     
     
-//    /*
-//     these are some really important methods that you will always use
-//     */
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        print("MapRouteViewController: \(#function)")
-//        // optional binding
-//        if let location = locations.first {
-//            // there is a lot you can access from CLLocation, like time, altitude, literally
-//            // everything. You will need it for your project
-//            print("user location : lat \(location.coordinate.latitude), lng \(location.coordinate.longitude)")
-//            route.addCorrdinate(coords: location.coordinate)
-//        }
-//    }
-//    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-//        print("MapRouteViewController: \(#function)")
-//        print("\(#function) \(error.localizedDescription)")
-//    }
-//
-//    /*
-//     this is the method that is called when the location authorization
-//     changes
-//     */
-//    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-//        print("MapRouteViewController: \(#function)")
-//        print("\(#function)")
-//        if (manager.authorizationStatus == .authorizedAlways) {
-//
-//        }
-//    }
+    /*
+     these are some really important methods that you will always use
+     */
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("MapRouteViewController: \(#function)")
+        // optional binding
+        if let location = locations.first {
+            // there is a lot you can access from CLLocation, like time, altitude, literally
+            // everything. You will need it for your project
+            print("user location : lat \(location.coordinate.latitude), lng \(location.coordinate.longitude)")
+            route.addCorrdinate(coords: location.coordinate)
+        }
+    }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("MapRouteViewController: \(#function)")
+        print("\(#function) \(error.localizedDescription)")
+    }
+
+    /*
+     this is the method that is called when the location authorization
+     changes
+     */
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        print("MapRouteViewController: \(#function)")
+        print("\(#function)")
+        if (manager.authorizationStatus == .authorizedAlways) {
+
+        }
+    }
 
     /*
     // MARK: - Navigation

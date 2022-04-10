@@ -49,9 +49,9 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
                 let shapes = i
                 for shape in shapes {
                     for coordinatePair in shape.shell {
-                        let coord = CLLocationCoordinate2D(latitude: coordinatePair.lat
-                                                           , longitude: coordinatePair.lng)
-                        self.coordinatesToMap.append(coord)
+//                        let coord = CLLocationCoordinate2D(latitude: Double(coordinatePair.lat)
+//                                                           , longitude: Double(coordinatePair.lng))
+//                        self.coordinatesToMap.append(coord)
                     }
                 }
             }

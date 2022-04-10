@@ -61,7 +61,7 @@ class IsochroneModel {
                     "type": "driving"
                   },
                   "departure_time": "2021-09-27T08:00:00Z",
-                  "travel_time": 3600
+                  "travel_time": 180
                 }
               ]
             }
@@ -86,18 +86,15 @@ class IsochroneModel {
                 print(error?.localizedDescription ?? "No dat")
                 return
             }
-            
+            let json = String(data: data!, encoding: .utf8)
+            print(json!)
             if let data = data {
                 print("   \(#function): Data: \(String(describing:data))")
                 do {
                     let output = try JSONDecoder().decode(InitialOutput.self, from: data)
-                    print("   \(#function): result: \(output)")
-                    if let resultsArray = output.results {
-                        if !resultsArray.isEmpty  {
-                            let result = resultsArray[0]
-                            onSuccess(result.shapes)
-                        }
-                    }
+//                    print("   \(#function): result: \(String(describing: output.results))")
+                    print("\(#function): type: \(output.type)")
+//                    let resultsArray = output.geometry
                 } catch {
                     print("   caught in 4K!!!!")
                     print(error)

@@ -16,10 +16,16 @@
 		EAEA5B782800B37C00A7AC7C /* WhangTristan_FinalProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B772800B37C00A7AC7C /* WhangTristan_FinalProjectTests.swift */; };
 		EAEA5B822800B37C00A7AC7C /* WhangTristan_FinalProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B812800B37C00A7AC7C /* WhangTristan_FinalProjectUITests.swift */; };
 		EAEA5B842800B37C00A7AC7C /* WhangTristan_FinalProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B832800B37C00A7AC7C /* WhangTristan_FinalProjectUITestsLaunchTests.swift */; };
-		EAEA5B912800B6BD00A7AC7C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B902800B6BD00A7AC7C /* MapViewController.swift */; };
 		EAEA5B962800B6FF00A7AC7C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B952800B6FF00A7AC7C /* Location.swift */; };
 		EAEA5B982800B7DB00A7AC7C /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B972800B7DB00A7AC7C /* RouteModel.swift */; };
 		EAEA5B9A2800B96500A7AC7C /* RouteDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B992800B96500A7AC7C /* RouteDataModel.swift */; };
+		EAEA5B9C280136EA00A7AC7C /* MapRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B9B280136EA00A7AC7C /* MapRouteViewController.swift */; };
+		EAEA5B9E28013FF600A7AC7C /* MapTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B9D28013FF600A7AC7C /* MapTrackingViewController.swift */; };
+		EAEA5BA0280254DF00A7AC7C /* IsochroneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B9F280254DF00A7AC7C /* IsochroneViewController.swift */; };
+		EAEA5BA2280254F100A7AC7C /* IsochroneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5BA1280254F100A7AC7C /* IsochroneModel.swift */; };
+		EAEA5BA428025A5600A7AC7C /* ArrivalSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5BA328025A5600A7AC7C /* ArrivalSearch.swift */; };
+		EAEA5BA6280268A400A7AC7C /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5BA5280268A400A7AC7C /* Shell.swift */; };
+		EAEA5BA8280268E900A7AC7C /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5BA7280268E900A7AC7C /* Shape.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,10 +59,16 @@
 		EAEA5B7D2800B37C00A7AC7C /* WhangTristan_FinalProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhangTristan_FinalProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAEA5B812800B37C00A7AC7C /* WhangTristan_FinalProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhangTristan_FinalProjectUITests.swift; sourceTree = "<group>"; };
 		EAEA5B832800B37C00A7AC7C /* WhangTristan_FinalProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhangTristan_FinalProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		EAEA5B902800B6BD00A7AC7C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		EAEA5B952800B6FF00A7AC7C /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		EAEA5B972800B7DB00A7AC7C /* RouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteModel.swift; sourceTree = "<group>"; };
 		EAEA5B992800B96500A7AC7C /* RouteDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDataModel.swift; sourceTree = "<group>"; };
+		EAEA5B9B280136EA00A7AC7C /* MapRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRouteViewController.swift; sourceTree = "<group>"; };
+		EAEA5B9D28013FF600A7AC7C /* MapTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTrackingViewController.swift; sourceTree = "<group>"; };
+		EAEA5B9F280254DF00A7AC7C /* IsochroneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsochroneViewController.swift; sourceTree = "<group>"; };
+		EAEA5BA1280254F100A7AC7C /* IsochroneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsochroneModel.swift; sourceTree = "<group>"; };
+		EAEA5BA328025A5600A7AC7C /* ArrivalSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalSearch.swift; sourceTree = "<group>"; };
+		EAEA5BA5280268A400A7AC7C /* Shell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
+		EAEA5BA7280268E900A7AC7C /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +160,9 @@
 			isa = PBXGroup;
 			children = (
 				EAEA5B642800B37A00A7AC7C /* ViewController.swift */,
-				EAEA5B902800B6BD00A7AC7C /* MapViewController.swift */,
+				EAEA5B9B280136EA00A7AC7C /* MapRouteViewController.swift */,
+				EAEA5B9F280254DF00A7AC7C /* IsochroneViewController.swift */,
+				EAEA5B9D28013FF600A7AC7C /* MapTrackingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -159,6 +173,10 @@
 				EAEA5B952800B6FF00A7AC7C /* Location.swift */,
 				EAEA5B972800B7DB00A7AC7C /* RouteModel.swift */,
 				EAEA5B992800B96500A7AC7C /* RouteDataModel.swift */,
+				EAEA5BA1280254F100A7AC7C /* IsochroneModel.swift */,
+				EAEA5BA328025A5600A7AC7C /* ArrivalSearch.swift */,
+				EAEA5BA5280268A400A7AC7C /* Shell.swift */,
+				EAEA5BA7280268E900A7AC7C /* Shape.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -294,12 +312,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAEA5BA428025A5600A7AC7C /* ArrivalSearch.swift in Sources */,
+				EAEA5BA2280254F100A7AC7C /* IsochroneModel.swift in Sources */,
+				EAEA5BA0280254DF00A7AC7C /* IsochroneViewController.swift in Sources */,
 				EAEA5B962800B6FF00A7AC7C /* Location.swift in Sources */,
 				EAEA5B652800B37A00A7AC7C /* ViewController.swift in Sources */,
+				EAEA5B9E28013FF600A7AC7C /* MapTrackingViewController.swift in Sources */,
+				EAEA5BA8280268E900A7AC7C /* Shape.swift in Sources */,
+				EAEA5BA6280268A400A7AC7C /* Shell.swift in Sources */,
 				EAEA5B612800B37A00A7AC7C /* AppDelegate.swift in Sources */,
+				EAEA5B9C280136EA00A7AC7C /* MapRouteViewController.swift in Sources */,
 				EAEA5B982800B7DB00A7AC7C /* RouteModel.swift in Sources */,
 				EAEA5B632800B37A00A7AC7C /* SceneDelegate.swift in Sources */,
-				EAEA5B912800B6BD00A7AC7C /* MapViewController.swift in Sources */,
 				EAEA5B9A2800B96500A7AC7C /* RouteDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

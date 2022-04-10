@@ -10,6 +10,7 @@ import Foundation
 class ArrivalSearch {
     var id: String = ""
     var coords: [String: Double] = [:]
+    // travel_time is in seconds
     var travel_time: Int = 0
     var transportation: [String: String] = [:]
     var arrival_time: String = ""

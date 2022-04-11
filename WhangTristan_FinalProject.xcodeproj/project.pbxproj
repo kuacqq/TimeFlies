@@ -500,6 +500,9 @@
 				DEVELOPMENT_TEAM = PA25D68VBN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WhangTristan_FinalProject/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Time Flies";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location information is necessary for app functionality - whenInUseAndAlways";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location information is necessary for app functionality - whenInUse";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -528,6 +531,9 @@
 				DEVELOPMENT_TEAM = PA25D68VBN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WhangTristan_FinalProject/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Time Flies";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location information is necessary for app functionality - whenInUseAndAlways";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location information is necessary for app functionality - whenInUse";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

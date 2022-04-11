@@ -61,7 +61,7 @@ class IsochroneModel {
                     "type": "driving"
                   },
                   "departure_time": "2021-09-27T08:00:00Z",
-                  "travel_time": 1800
+                  "travel_time": 3600
                 }
               ]
             }
@@ -89,9 +89,10 @@ class IsochroneModel {
 //            let json = String(data: data!, encoding: .utf8)
 //            print(json!)
             if let data = data {
-                print("   \(#function): Data: \(String(describing:data))")
+//                print("   \(#function): Data: \(String(describing:data))")
                 do {
                     let output = try JSONDecoder().decode(Welcome.self, from: data)
+//                    print("   \(#function): \(output)")
                     let features = output.features
                     // do the closure on an array of features and extract all the geometries and nested coordinates.
                     if !features.isEmpty {
@@ -108,21 +109,3 @@ class IsochroneModel {
     
     
 }
-
-
-//        "{
-//          \"arrival_searches\": \[
-//            {
-//              \"id\": \"isochrone-0\",
-//              \"coords\": {
-//                \"lat\": 51.5119637,
-//                \"lng\": -0.1279543
-//              },
-//              \"travel_time\": 1800,
-//              \"transportation\": {
-//                \"type\": \"public_transport\"
-//              },
-//              \"arrival_time\": \"2022-04-09T16:00:00.000Z\"
-//            }
-//          ]
-//        }"

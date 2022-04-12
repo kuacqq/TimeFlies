@@ -106,5 +106,20 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
     }
     
     
-    
+    /*
+     segues to change the navigation parameters
+     */
+//    extension IsochroneViewController {
+//        @IBAction func doneToIsochroneViewController(_ segue: UIStoryboardSegue) {
+//
+//        }
+//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let inputViewController = segue.destination as? input_isochroneViewController
+        {
+            inputViewController.inputParametersChanged = {
+                self.loadIsochrone()
+            }
+        }
+    }
 }

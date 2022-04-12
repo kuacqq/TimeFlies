@@ -87,7 +87,7 @@
                     <navigationItem key="navigationItem" id="UE5-Ls-DYU">
                         <barButtonItem key="rightBarButtonItem" title="Modify" id="boo-Vl-NhG">
                             <connections>
-                                <segue destination="TmV-Tw-NWw" kind="presentation" id="vAw-7J-67z"/>
+                                <segue destination="TmV-Tw-NWw" kind="show" id="rRj-hh-jNR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -104,11 +104,11 @@
             <objects>
                 <viewController id="TmV-Tw-NWw" customClass="input_isochroneViewController" customModule="WhangTristan_FinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JcG-eh-Bku">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pmL-rd-oTP">
-                                <rect key="frame" x="20" y="76" width="374" height="683"/>
+                                <rect key="frame" x="20" y="108" width="374" height="622"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5f-K0-TUO">
                                         <rect key="frame" x="20" y="10" width="339" height="28"/>
@@ -178,9 +178,14 @@
                             <constraint firstItem="o3s-cF-Diz" firstAttribute="bottom" secondItem="pmL-rd-oTP" secondAttribute="bottom" constant="34" id="q9R-4W-iCx"/>
                         </constraints>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="Done" id="kFQ-R9-W40" userLabel="Done"/>
-                    </toolbarItems>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="fxn-9c-0en">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="2uj-tF-TOX">
+                            <connections>
+                                <action selector="doneButtonDidPressed:" destination="TmV-Tw-NWw" id="ZlN-Mq-wki"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

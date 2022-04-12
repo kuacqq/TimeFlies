@@ -41,7 +41,10 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
         let span = MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
         let region = MKCoordinateRegion(center: myInitLocation, span: span)
         isochroneMapView.setRegion(region, animated: true)
-        loadIsochrone()
+        /*
+         uncomment loadIsochone to enable the api again.
+         */
+//        loadIsochrone()
     }
     
     

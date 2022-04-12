@@ -12,6 +12,19 @@ class IsochroneModel {
     
     var ACCESS_KEY = "34acafbe0724fd45d6d83e02cfa92392"
     var APPLICATION_ID = "d9b90531"
+    var inputLngDouble: Double?
+    var inputLatDouble: Double?
+    var inputModeOfTransport: String?
+    var inputTravelTimeInt: Int?
+
+    
+    func changeInputs(lat: Double, lng: Double, modeOfTransport: String, travelTime: Int) {
+        self.inputLngDouble = lng
+        self.inputLatDouble = lat
+        self.inputTravelTimeInt = travelTime
+        self.inputModeOfTransport = modeOfTransport
+    }
+    
     var GeometryArray: [Geometry] = []
     func getIsochrone(onSuccess: @escaping ([Feature]) -> Void) {
         print("IsochroneViewController: \(#function)")
@@ -54,14 +67,14 @@ class IsochroneModel {
                 {
                   "id": "My first isochrone",
                   "coords": {
-                    "lat": 51.507609,
-                    "lng": -0.128315
+                    "lat": \(String(self.inputLatDouble ?? -0.128315)),
+                    "lng": \(String(self.inputLngDouble ?? 51.507609))
                   },
                   "transportation": {
-                    "type": "driving"
+                    "type": \(self.inputModeOfTransport ?? "driving")
                   },
                   "departure_time": "2021-09-27T08:00:00Z",
-                  "travel_time": 3600
+                  "travel_time": \(String(self.inputTravelTimeInt ?? 3600))
                 }
               ]
             }

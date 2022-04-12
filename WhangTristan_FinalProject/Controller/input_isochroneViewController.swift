@@ -23,9 +23,29 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
 
         // Do any additional setup after loading the view.
         print("input_isochroneViewController: \(#function)")
+        
     }
     
     
+    @IBAction func doneButtonDidPressed(_ sender: Any) {
+        print("input_isochroneViewController: \(#function): ")
+        if addressTextField.text != nil {
+            let date = timePicker.date
+            let hourValue: Int = Calendar.current.component(.hour, from: date)
+            let minValue: Int = Calendar.current.component(.minute, from: date)
+            let travelTimeCalculated: Int = ((hourValue * 60) + minValue) * 60
+            
+            IsochroneModel.shared.changeInputs(lat: 0.0, lng: 0.0, modeOfTransport: TRANSPORT_MODE_ARRAY[pickerView.selectedRow(inComponent: 0)], travelTime: travelTimeCalculated)
+            navigationController?.popViewController(animated: true)
+            inputParametersChanged?()
+        } else {
+            let alert = UIAlertController(title: "No address entered", message: "Please enter a new address to load a new isochone.", preferredStyle: .alert)
+            let okayAction = UIAlertAction(title: "Okay", style: .default)
+            alert.addAction(okayAction)
+            present(alert, animated: true, completion: nil)
+        }
+        
+    }
     /*
      timePicker functions and attributes
      */

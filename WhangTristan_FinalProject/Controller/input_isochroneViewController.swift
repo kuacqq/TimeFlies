@@ -30,12 +30,15 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
     @IBAction func doneButtonDidPressed(_ sender: Any) {
         print("input_isochroneViewController: \(#function): ")
         if addressTextField.text != nil {
-            let date = timePicker.date
-            let hourValue: Int = Calendar.current.component(.hour, from: date)
-            let minValue: Int = Calendar.current.component(.minute, from: date)
+            let date = timePicker.calendar.dateComponents([.hour, .minute], from: timePicker.date)
+            let hourValue = date.hour ?? 1
+            let minValue = date.minute ?? 0
+//            let date = timePicker.date
+//            let hourValue: Int = Calendar.current.component(.hour, from: date)
+//            let minValue: Int = Calendar.current.component(.minute, from: date)
             let travelTimeCalculated: Int = ((hourValue * 60) + minValue) * 60
             
-            IsochroneModel.shared.changeInputs(lat: 0.0, lng: 0.0, modeOfTransport: TRANSPORT_MODE_ARRAY[pickerView.selectedRow(inComponent: 0)], travelTime: travelTimeCalculated)
+            IsochroneModel.shared.changeInputs(lat: 51.507609, lng: -0.128315, modeOfTransport: JSON_TRANSPORT_MODE_ARRAY[pickerView.selectedRow(inComponent: 0)], travelTime: travelTimeCalculated)
             navigationController?.popViewController(animated: true)
             inputParametersChanged?()
         } else {
@@ -57,6 +60,7 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
      modeOfTransportPicker functinos and attributes
      */
     let TRANSPORT_MODE_ARRAY = ["Cycling", "Driving", "Public Transport", "Walking", "Bus", "Train", "Ferry"]
+    let JSON_TRANSPORT_MODE_ARRAY = ["cycling", "driving", "public_transport", "walking", "bus", "train", "ferry"]
     let NUMBER_OF_COMPONENTS = 1
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
 //        print("input_isochroneViewController: \(#function)")

@@ -192,6 +192,7 @@
                         <outlet property="addressTextField" destination="MXE-6j-ME8" id="D9v-Qz-Hd0"/>
                         <outlet property="holderView" destination="pmL-rd-oTP" id="YAu-AQ-SP4"/>
                         <outlet property="pickerView" destination="zr9-Ls-NR6" id="clk-8z-sa1"/>
+                        <outlet property="timePicker" destination="vyW-XR-mgd" id="38r-Vc-vMY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EnI-8E-Ftk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

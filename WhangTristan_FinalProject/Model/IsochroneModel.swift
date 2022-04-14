@@ -12,13 +12,14 @@ class IsochroneModel {
     
     var ACCESS_KEY = "34acafbe0724fd45d6d83e02cfa92392"
     var APPLICATION_ID = "d9b90531"
-    var inputLngDouble: Double?
-    var inputLatDouble: Double?
-    var inputModeOfTransport: String?
-    var inputTravelTimeInt: Int?
+    var inputLngDouble: Double? = -0.128315
+    var inputLatDouble: Double? = 51.507609
+    var inputModeOfTransport: String? = "driving"
+    var inputTravelTimeInt: Int? = 3600
 
     
     func changeInputs(lat: Double, lng: Double, modeOfTransport: String, travelTime: Int) {
+        print("IsochroneModel: \(#function)")
         self.inputLngDouble = lng
         self.inputLatDouble = lat
         self.inputTravelTimeInt = travelTime
@@ -27,7 +28,7 @@ class IsochroneModel {
     
     var GeometryArray: [Geometry] = []
     func getIsochrone(onSuccess: @escaping ([Feature]) -> Void) {
-        print("IsochroneViewController: \(#function)")
+        print("IsochroneModel: \(#function)")
         
         /*
          This whole section is to make the url request work. it has a body and
@@ -61,30 +62,49 @@ class IsochroneModel {
         
         
         
-        let finalBody = """
+        let modular_finalBody = """
             {
               "departure_searches": [
                 {
                   "id": "My first isochrone",
                   "coords": {
-                    "lat": \(String(self.inputLatDouble ?? -0.128315)),
-                    "lng": \(String(self.inputLngDouble ?? 51.507609))
+                    "lat": \(self.inputLatDouble ?? 51.507609),
+                    "lng": \(self.inputLngDouble ?? -0.128315)
                   },
                   "transportation": {
-                    "type": \(self.inputModeOfTransport ?? "driving")
+                    "type": "\(self.inputModeOfTransport ?? "driving")"
                   },
                   "departure_time": "2021-09-27T08:00:00Z",
-                  "travel_time": \(String(self.inputTravelTimeInt ?? 3600))
+                  "travel_time": \(self.inputTravelTimeInt ?? 3600)
                 }
               ]
             }
         """.data(using: .utf8)
 
-        
+        let static_finalBody = """
+            {
+              "departure_searches": [
+                {
+                  "id": "My first isochrone",
+                  "coords": {
+                    "lat": 51.507609,
+                    "lng": -0.128315
+                  },
+                  "transportation": {
+                    "type": "driving"
+                  },
+                  "departure_time": "2021-09-27T08:00:00Z",
+                  "travel_time": 3600
+                }
+              ]
+            }
+        """.data(using: .utf8)
+
+        print("\(#function): modular_finalBody: \(String(data: modular_finalBody!, encoding: .utf8)!)")
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.httpBody = finalBody
+        request.httpBody = modular_finalBody!
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/geo+json", forHTTPHeaderField: "Accept")
 //        request.addValue("api.traveltimeapp.com", forHTTPHeaderField: "Host")

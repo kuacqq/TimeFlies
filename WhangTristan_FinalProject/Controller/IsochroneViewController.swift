@@ -44,7 +44,7 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
         /*
          uncomment loadIsochone to enable the api again.
          */
-//        loadIsochrone()
+        loadIsochrone()
     }
     
     

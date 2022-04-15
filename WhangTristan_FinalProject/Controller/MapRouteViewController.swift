@@ -110,14 +110,26 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
             // everything. You will need it for your project
             print("user location : lat \(location.coordinate.latitude), lng \(location.coordinate.longitude)")
             route.addCorrdinate(coords: location.coordinate)
+            self.shouldIAddLocation(loc: location)
         }
     }
     
-    func shouldIAddLocation() {
+    
+    /*
+     I still have to make a decision as to how long in a specific place qualifies leaving a marker there.
+     */
+    func shouldIAddLocation(loc: CLLocation) {
         let currentTime = Date()
         let timeDifference = currentTime.timeIntervalSince(self.lastTimeMeasurement)
         print("\(#function)")
         print("   timeDifference: \(timeDifference)")
+        if (timeDifference >= 10) {
+            var minutesSpent = Int(timeDifference / 60)
+            let hoursSpent = Int(minutesSpent / 60)
+            minutesSpent = minutesSpent % 60
+            route.addLocation(lng: loc.coordinate.longitude, lat: loc.coordinate.latitude, hrsSpent: hoursSpent, minSpent: minutesSpent)
+        }
+        
     }
     
     

@@ -114,9 +114,10 @@ class IsochroneModel {
         URLSession.shared.dataTask(with: request) { data, response, error in
 //            print("   \(#function): URLSession: response: \(response as Any)")
             
-            if error != nil {
+//            if error != nil {
+            if let error = error {
                 print("   interior error")
-                print(error?.localizedDescription ?? "No dat")
+                print(error.localizedDescription)
                 return
             }
 //            let json = String(data: data!, encoding: .utf8)

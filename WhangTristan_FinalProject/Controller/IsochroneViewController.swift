@@ -26,9 +26,14 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func buttonDidTapped(_ sender: Any) {
         print("IsochroneViewController: \(#function)")
-        loadIsochrone()
+//        loadIsochrone()
         DispatchQueue.main.async {
             self.createPolyLine()
+        }
+    }
+    @IBAction func clearButtonDidTapped(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.removeAllPolyLines()
         }
     }
     
@@ -41,10 +46,12 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
         let span = MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
         let region = MKCoordinateRegion(center: myInitLocation, span: span)
         isochroneMapView.setRegion(region, animated: true)
+        
+        
         /*
          uncomment loadIsochone to enable the api again.
          */
-        loadIsochrone()
+//        loadIsochrone()
     }
     
     
@@ -62,8 +69,15 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
             let polyLine = MKPolyline(coordinates: shell, count: shell.count)
             isochroneMapView.addOverlay(polyLine)
         }
-        
     }
+    
+    func removeAllPolyLines() {
+        let currentOverlays = self.isochroneMapView.overlays
+        isochroneMapView.removeOverlays(currentOverlays)
+    }
+    
+    
+    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if (overlay is MKPolyline) {
             let polyLineRender = MKPolylineRenderer(overlay: overlay)
@@ -88,6 +102,7 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
                 var featureCounter = 0
                 let features = i
                 for feature in features {
+                    var newCoordinatesToMap: [[CLLocationCoordinate2D]] = []
                     let geometry = feature.geometry
                     self.sharedIsochoneModel.GeometryArray.append(geometry)
                     let outtermostCoordinatesArray = geometry.coordinates
@@ -97,8 +112,9 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
                             let coordinatesIn2D = CLLocationCoordinate2D(latitude: CLLocationDegrees(coordinatePair[1]), longitude: CLLocationDegrees(coordinatePair[0]))
                             shell.append(coordinatesIn2D)
                         }
-                        self.coordinatesToMap.append(shell)
+                        newCoordinatesToMap.append(shell)
                     }
+                    self.coordinatesToMap = newCoordinatesToMap
                     featureCounter += 1
                 }
                 print("featureCounter: \(featureCounter)" )

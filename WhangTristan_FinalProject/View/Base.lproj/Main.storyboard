@@ -18,25 +18,58 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QRr-oM-Yib">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="1XS-2s-v5S"/>
+                                </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ilC-N5-6db">
-                                <rect key="frame" x="327" y="44" width="67" height="31"/>
+                                <rect key="frame" x="294" y="44" width="100" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="IUD-aH-UL1"/>
+                                    <constraint firstAttribute="height" constant="44" id="XAA-Uc-tCK"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="PolyLine"/>
                                 <connections>
                                     <action selector="testButtonDidTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WoL-G4-con"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoa-0c-Ivo">
+                                <rect key="frame" x="294" y="103" width="100" height="44"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Print"/>
+                                <connections>
+                                    <action selector="printButtonDidTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JDx-qN-AHo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pXZ-d2-cTf">
+                                <rect key="frame" x="294" y="162" width="100" height="44"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="location.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="recenterButtonDidTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Td-p1-93k"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="pXZ-d2-cTf" firstAttribute="width" secondItem="eoa-0c-Ivo" secondAttribute="width" id="06q-hU-BBz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eoa-0c-Ivo" secondAttribute="trailing" constant="20" id="1JQ-ik-Seb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ilC-N5-6db" secondAttribute="trailing" constant="20" id="2t6-4s-tzl"/>
                             <constraint firstItem="ilC-N5-6db" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="7dg-Fg-vjE"/>
                             <constraint firstItem="QRr-oM-Yib" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="HXR-dF-7tk"/>
                             <constraint firstItem="QRr-oM-Yib" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Lbd-Fy-Qr0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ilC-N5-6db" secondAttribute="trailing" constant="20" id="Wjk-mz-BQ1"/>
+                            <constraint firstItem="pXZ-d2-cTf" firstAttribute="height" secondItem="eoa-0c-Ivo" secondAttribute="height" id="X9U-d2-53q"/>
+                            <constraint firstItem="eoa-0c-Ivo" firstAttribute="top" secondItem="ilC-N5-6db" secondAttribute="bottom" constant="15" id="Xrc-ci-ggB"/>
+                            <constraint firstItem="eoa-0c-Ivo" firstAttribute="height" secondItem="ilC-N5-6db" secondAttribute="height" id="a0g-9E-WwR"/>
                             <constraint firstAttribute="trailing" secondItem="QRr-oM-Yib" secondAttribute="trailing" id="b44-a4-bVR"/>
+                            <constraint firstItem="ilC-N5-6db" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hfo-EK-gJe"/>
                             <constraint firstAttribute="bottom" secondItem="QRr-oM-Yib" secondAttribute="bottom" id="u9L-Td-abU"/>
+                            <constraint firstItem="eoa-0c-Ivo" firstAttribute="width" secondItem="ilC-N5-6db" secondAttribute="width" id="vFF-bk-U0A"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pXZ-d2-cTf" secondAttribute="trailing" constant="20" id="xTd-8G-8WN"/>
+                            <constraint firstItem="pXZ-d2-cTf" firstAttribute="top" secondItem="eoa-0c-Ivo" secondAttribute="bottom" constant="15" id="yUk-pz-LQR"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Route" image="mappin" catalog="system" id="kZA-zM-w4c"/>
@@ -63,12 +96,24 @@
                                     <outlet property="delegate" destination="h8d-5f-PJv" id="6Yp-Jz-ZdJ"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWh-9l-iZn">
-                                <rect key="frame" x="288" y="128" width="106" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWh-9l-iZn">
+                                <rect key="frame" x="20" y="88" width="100" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="0T3-FI-nUX"/>
+                                    <constraint firstAttribute="height" constant="44" id="OS8-HN-anD"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="Isochrone Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Load"/>
                                 <connections>
                                     <action selector="buttonDidTapped:" destination="h8d-5f-PJv" eventType="touchUpInside" id="opd-ou-vrz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEq-Lh-7vN">
+                                <rect key="frame" x="20" y="147" width="100" height="44"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Clear"/>
+                                <connections>
+                                    <action selector="clearButtonDidTapped:" destination="h8d-5f-PJv" eventType="touchUpInside" id="hef-Kc-MdE"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -76,18 +121,21 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Gqt-SE-8Hf" firstAttribute="trailing" secondItem="Yvk-87-7On" secondAttribute="trailing" id="2vT-Eq-mYD"/>
-                            <constraint firstAttribute="trailing" secondItem="PWh-9l-iZn" secondAttribute="trailing" constant="10" id="3xV-cU-WxR"/>
+                            <constraint firstItem="PWh-9l-iZn" firstAttribute="top" secondItem="Gqt-SE-8Hf" secondAttribute="top" id="9RV-oL-83U"/>
                             <constraint firstAttribute="bottom" secondItem="Yvk-87-7On" secondAttribute="bottom" id="H9E-49-XG9"/>
-                            <constraint firstItem="PWh-9l-iZn" firstAttribute="top" secondItem="Gqt-SE-8Hf" secondAttribute="top" constant="10" id="hRU-4S-fbq"/>
+                            <constraint firstItem="DEq-Lh-7vN" firstAttribute="width" secondItem="PWh-9l-iZn" secondAttribute="width" id="NAv-Dm-9Bp"/>
+                            <constraint firstItem="DEq-Lh-7vN" firstAttribute="top" secondItem="PWh-9l-iZn" secondAttribute="bottom" constant="15" id="WuP-OB-bYa"/>
+                            <constraint firstItem="PWh-9l-iZn" firstAttribute="leading" secondItem="Gqt-SE-8Hf" secondAttribute="leading" constant="20" id="hTT-Pp-9JE"/>
                             <constraint firstItem="Yvk-87-7On" firstAttribute="leading" secondItem="Gqt-SE-8Hf" secondAttribute="leading" id="hfs-5N-mhp"/>
                             <constraint firstItem="Yvk-87-7On" firstAttribute="top" secondItem="Ar8-bV-Pm3" secondAttribute="top" id="oKa-Hu-NJB"/>
-                            <constraint firstItem="PWh-9l-iZn" firstAttribute="width" secondItem="Ar8-bV-Pm3" secondAttribute="width" multiplier="0.326087" id="pa1-rg-kSX"/>
+                            <constraint firstItem="DEq-Lh-7vN" firstAttribute="height" secondItem="PWh-9l-iZn" secondAttribute="height" id="pjj-tk-hDG"/>
+                            <constraint firstItem="DEq-Lh-7vN" firstAttribute="leading" secondItem="Gqt-SE-8Hf" secondAttribute="leading" constant="20" id="u92-Lg-GKb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="UE5-Ls-DYU">
                         <barButtonItem key="rightBarButtonItem" title="Modify" id="boo-Vl-NhG">
                             <connections>
-                                <segue destination="TmV-Tw-NWw" kind="show" id="rRj-hh-jNR"/>
+                                <segue destination="TmV-Tw-NWw" kind="show" identifier="modifySegue" id="rRj-hh-jNR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -240,6 +288,7 @@
     </scenes>
     <resources>
         <image name="books.vertical.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="location.fill" catalog="system" width="128" height="121"/>
         <image name="mappin" catalog="system" width="105" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

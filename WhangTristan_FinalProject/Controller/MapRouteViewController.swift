@@ -19,7 +19,7 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     let route = RouteModel.shared
     let coordinateArray = RouteModel.shared.coordinatesArray
     let locationArray = RouteModel.shared.locationArray
-    
+    var lastTimeMeasurement: Date = Date()
     
     /*
      Outlets of MapViewController Class
@@ -32,34 +32,55 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
      */
     @IBAction func testButtonDidTapped(_ sender: Any) {
         print("MapRouteViewController: \(#function)")
+        self.createPolyLine()
         
+    }
+    @IBAction func printButtonDidTapped(_ sender: Any) {
+        print("\(#function): PRINTER")
+        print("   route.locationArray: \(route.locationArray)")
+        print("   lastMeasuredTime: \(lastTimeMeasurement)")
+        self.shouldIAddLocation()
+    }
+    @IBAction func recenterButtonDidTapped(_ sender: Any) {
+        if let currentLocation = locationManager.location?.coordinate {
+            let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+            let region = MKCoordinateRegion(center: currentLocation, span: span)
+            mapView.setRegion(region, animated: true)
+        }
     }
     
     
     override func viewDidLoad() {
         print("MapRouteViewController: \(#function)")
         super.viewDidLoad()
+        
+        // core location setup
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 10
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+        
+        
+        if let currentlocation = locationManager.location?.coordinate {
+            myInitLocation = currentlocation
+        }
+        
+        // map view and poly line setup
         mapView.delegate = self
-        let span = MKCoordinateSpan(latitudeDelta: 20, longitudeDelta: 20)
+        let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
         let region = MKCoordinateRegion(center: myInitLocation, span: span)
         mapView.setRegion(region, animated: true)
         
-        createPolyLine()
+//        createPolyLine()
     }
     
     
     func createPolyLine() {
         print("MapRouteViewController: \(#function)")
+        print("   Route.coordinatesArray: \(route.coordinatesArray)")
         
-        let locations = [
-            CLLocationCoordinate2D(latitude: 32.7767, longitude: -96.7970),
-            CLLocationCoordinate2D(latitude: 37.7833, longitude: -122.4167),
-            CLLocationCoordinate2D(latitude: 42.2814, longitude: -83.7483),
-            CLLocationCoordinate2D(latitude: 32.7767, longitude: -96.7970)
-        ]
-        print("   Locations: \(locations)")
-        
-        let polyLine = MKPolyline(coordinates: locations, count: locations.count)
+        let polyLine = MKPolyline(coordinates: route.coordinatesArray, count: route.coordinatesArray.count)
         mapView.addOverlay(polyLine)
     }
     
@@ -91,6 +112,15 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
             route.addCorrdinate(coords: location.coordinate)
         }
     }
+    
+    func shouldIAddLocation() {
+        let currentTime = Date()
+        let timeDifference = currentTime.timeIntervalSince(self.lastTimeMeasurement)
+        print("\(#function)")
+        print("   timeDifference: \(timeDifference)")
+    }
+    
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("MapRouteViewController: \(#function)")
         print("\(#function) \(error.localizedDescription)")

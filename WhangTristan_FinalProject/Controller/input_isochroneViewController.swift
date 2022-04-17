@@ -29,17 +29,20 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
     
     
     @IBAction func doneButtonDidPressed(_ sender: Any) {
-        print("input_isochroneViewController: \(#function): ")
-        if addressTextField.text != nil {
+        print("input_isochroneViewController: \(#function):")
+        if (addressTextField.text != "") {
             let date = timePicker.calendar.dateComponents([.hour, .minute], from: timePicker.date)
             let hourValue = date.hour ?? 1
             let minValue = date.minute ?? 0
-//            let date = timePicker.date
-//            let hourValue: Int = Calendar.current.component(.hour, from: date)
-//            let minValue: Int = Calendar.current.component(.minute, from: date)
+
             let travelTimeCalculated: Int = ((hourValue * 60) + minValue) * 60
             
-            IsochroneModel.shared.changeInputs(lat: 51.507609, lng: -0.128315, modeOfTransport: JSON_TRANSPORT_MODE_ARRAY[pickerView.selectedRow(inComponent: 0)], travelTime: travelTimeCalculated)
+            geocodeAddress(addressInput: addressTextField.text!)
+//            print("geocode lat: \(sharedGeocodingModel.outputCoordinates.latitude), lng: \(sharedGeocodingModel.outputCoordinates.longitude)")
+//            IsochroneModel.shared.changeInputs(lat: sharedGeocodingModel.outputCoordinates.latitude, lng: sharedGeocodingModel.outputCoordinates.longitude, modeOfTransport: JSON_TRANSPORT_MODE_ARRAY[pickerView.selectedRow(inComponent: 0)], travelTime: travelTimeCalculated)
+            IsochroneModel.shared.setTime(travelTime: travelTimeCalculated)
+            IsochroneModel.shared.setModeOfTransport(mode: JSON_TRANSPORT_MODE_ARRAY[pickerView.selectedRow(inComponent: 0)])
+            
             navigationController?.popViewController(animated: true)
             inputParametersChanged?()
         } else {
@@ -54,8 +57,9 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
     
     func geocodeAddress(addressInput: String) {
         sharedGeocodingModel.setAddress(input: addressInput)
-        DispatchQueue.main.async {
-            <#code#>
+        self.sharedGeocodingModel.geocode { i in
+            self.sharedGeocodingModel.outputCoordinates = i
+            IsochroneModel.shared.setLatLong(lat: self.sharedGeocodingModel.outputCoordinates.latitude, lng: self.sharedGeocodingModel.outputCoordinates.longitude)
         }
     }
     

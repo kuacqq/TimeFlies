@@ -26,7 +26,7 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func buttonDidTapped(_ sender: Any) {
         print("IsochroneViewController: \(#function)")
-//        loadIsochrone()
+        loadIsochrone()
         DispatchQueue.main.async {
             self.createPolyLine()
         }
@@ -37,6 +37,19 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    @IBAction func realignButtonDidTapped(_ sender: Any) {
+        print("\(#function)")
+        if let lat = sharedIsochoneModel.inputLatDouble, let lng = sharedIsochoneModel.inputLngDouble {
+            print("   lat: \(lat), lng: \(lng)")
+            let currentLocation = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+            
+            let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+            let region = MKCoordinateRegion(center: currentLocation, span: span)
+            DispatchQueue.main.async { [self] in
+                isochroneMapView.setRegion(region, animated: true)
+            }
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -51,7 +64,9 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
         /*
          uncomment loadIsochone to enable the api again.
          */
-        loadIsochrone()
+        DispatchQueue.main.async { [self] in
+            loadIsochrone()
+        }
     }
     
     
@@ -136,8 +151,11 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let inputViewController = segue.destination as? input_isochroneViewController
         {
-            inputViewController.inputParametersChanged = {
-                self.loadIsochrone()
+            DispatchQueue.main.async {
+                
+                inputViewController.inputParametersChanged = {
+        //                self.loadIsochrone()
+                }
             }
         }
     }

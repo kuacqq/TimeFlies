@@ -25,7 +25,16 @@ class IsochroneModel {
         self.inputTravelTimeInt = travelTime
         self.inputModeOfTransport = modeOfTransport
     }
-    
+    func setTime(travelTime: Int) {
+        self.inputTravelTimeInt = travelTime
+    }
+    func setLatLong(lat: Double, lng: Double) {
+        self.inputLatDouble = lat
+        self.inputLngDouble = lng
+    }
+    func setModeOfTransport(mode: String) {
+        self.inputModeOfTransport = mode
+    }
     var GeometryArray: [Geometry] = []
     func getIsochrone(onSuccess: @escaping ([Feature]) -> Void) {
         print("IsochroneModel: \(#function)")
@@ -81,24 +90,24 @@ class IsochroneModel {
             }
         """.data(using: .utf8)
 
-        let static_finalBody = """
-            {
-              "departure_searches": [
-                {
-                  "id": "My first isochrone",
-                  "coords": {
-                    "lat": 51.507609,
-                    "lng": -0.128315
-                  },
-                  "transportation": {
-                    "type": "driving"
-                  },
-                  "departure_time": "2021-09-27T08:00:00Z",
-                  "travel_time": 3600
-                }
-              ]
-            }
-        """.data(using: .utf8)
+//        let static_finalBody = """
+//            {
+//              "departure_searches": [
+//                {
+//                  "id": "My first isochrone",
+//                  "coords": {
+//                    "lat": 51.507609,
+//                    "lng": -0.128315
+//                  },
+//                  "transportation": {
+//                    "type": "driving"
+//                  },
+//                  "departure_time": "2021-09-27T08:00:00Z",
+//                  "travel_time": 3600
+//                }
+//              ]
+//            }
+//        """.data(using: .utf8)
 
         print("\(#function): modular_finalBody: \(String(data: modular_finalBody!, encoding: .utf8)!)")
         

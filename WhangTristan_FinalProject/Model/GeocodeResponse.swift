@@ -12,15 +12,12 @@ struct GeocodeResponse : Codable {
     var status: String
 }
 struct GeocodeResult : Codable {
-    var address_components: [AddressComponents]
+    var address_components: [AddressComponent]
     var formatted_address: String
     var geometry: GeocodeGeometry
     var place_id: String
 }
-struct AddressComponents : Codable {
-    var components: [Components]
-}
-struct Components : Codable {
+struct AddressComponent : Codable {
     var long_name: String
     var short_name: String
     var types: [String]

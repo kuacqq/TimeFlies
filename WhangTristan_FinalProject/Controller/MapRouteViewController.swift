@@ -39,7 +39,10 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         print("\(#function): PRINTER")
         print("   route.locationArray: \(route.locationArray)")
         print("   lastMeasuredTime: \(lastTimeMeasurement)")
-        self.shouldIAddLocation()
+        if let curLocation = locationManager.location {
+            self.shouldIAddLocation(loc: curLocation)
+        }
+        
     }
     @IBAction func recenterButtonDidTapped(_ sender: Any) {
         if let currentLocation = locationManager.location?.coordinate {
@@ -128,6 +131,7 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
             let hoursSpent = Int(minutesSpent / 60)
             minutesSpent = minutesSpent % 60
             route.addLocation(lng: loc.coordinate.longitude, lat: loc.coordinate.latitude, hrsSpent: hoursSpent, minSpent: minutesSpent)
+            self.lastTimeMeasurement = currentTime
         }
         
     }

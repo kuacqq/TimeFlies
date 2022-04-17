@@ -26,6 +26,8 @@
 		EAEA5BAA280271E300A7AC7C /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5BA9280271E300A7AC7C /* Results.swift */; };
 		EAEA5BAE2803908F00A7AC7C /* Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5BAD2803908F00A7AC7C /* Output.swift */; };
 		EAEA5BB02804D81000A7AC7C /* input_isochroneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5BAF2804D81000A7AC7C /* input_isochroneViewController.swift */; };
+		EAEB9358280A448A0055A442 /* GeocodingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB9357280A448A0055A442 /* GeocodingModel.swift */; };
+		EAEB935A280A488A0055A442 /* GeocodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB9359280A488A0055A442 /* GeocodeResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		EAEA5BA9280271E300A7AC7C /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		EAEA5BAD2803908F00A7AC7C /* Output.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Output.swift; sourceTree = "<group>"; };
 		EAEA5BAF2804D81000A7AC7C /* input_isochroneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = input_isochroneViewController.swift; sourceTree = "<group>"; };
+		EAEB9357280A448A0055A442 /* GeocodingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodingModel.swift; sourceTree = "<group>"; };
+		EAEB9359280A488A0055A442 /* GeocodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodeResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +175,8 @@
 		EAEA5B942800B6DA00A7AC7C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EAEB9357280A448A0055A442 /* GeocodingModel.swift */,
+				EAEB9359280A488A0055A442 /* GeocodeResponse.swift */,
 				EAEA5BAD2803908F00A7AC7C /* Output.swift */,
 				EAEA5B952800B6FF00A7AC7C /* Location.swift */,
 				EAEA5B972800B7DB00A7AC7C /* RouteModel.swift */,
@@ -317,6 +323,7 @@
 				EAEA5B962800B6FF00A7AC7C /* Location.swift in Sources */,
 				EAEA5B652800B37A00A7AC7C /* ViewController.swift in Sources */,
 				EAEA5B9E28013FF600A7AC7C /* MapTrackingViewController.swift in Sources */,
+				EAEB9358280A448A0055A442 /* GeocodingModel.swift in Sources */,
 				EAEA5B612800B37A00A7AC7C /* AppDelegate.swift in Sources */,
 				EAEA5B9C280136EA00A7AC7C /* MapRouteViewController.swift in Sources */,
 				EAEA5BAA280271E300A7AC7C /* Results.swift in Sources */,
@@ -324,6 +331,7 @@
 				EAEA5B632800B37A00A7AC7C /* SceneDelegate.swift in Sources */,
 				EAEA5B9A2800B96500A7AC7C /* RouteDataModel.swift in Sources */,
 				EAEA5BAE2803908F00A7AC7C /* Output.swift in Sources */,
+				EAEB935A280A488A0055A442 /* GeocodeResponse.swift in Sources */,
 				EAEA5BB02804D81000A7AC7C /* input_isochroneViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import CoreLocation
 
 class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-
+    let sharedGeocodingModel = GeocodingModel.shared
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet weak var modeOfTransportPicker: UIPickerView!
@@ -49,6 +50,19 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
         }
         
     }
+    
+    
+    func geocodeAddress(addressInput: String) {
+        sharedGeocodingModel.setAddress(input: addressInput)
+        DispatchQueue.main.async {
+            <#code#>
+        }
+    }
+    
+    
+    
+    
+    
     /*
      timePicker functions and attributes
      */

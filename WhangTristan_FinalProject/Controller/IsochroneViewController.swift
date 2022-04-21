@@ -10,10 +10,12 @@ import MapKit
 
 class IsochroneViewController: UIViewController, MKMapViewDelegate {
     
-    
+    var sharedGeocodingModel = GeocodingModel.shared
     var myInitLocation = CLLocationCoordinate2D(latitude: 51.50553730266506, longitude: -0.12818042746366376)
     var sharedIsochoneModel = IsochroneModel.shared
     var coordinatesToMap: [[CLLocationCoordinate2D]] = []
+    var query: String?
+    
     
     @IBOutlet weak var isochroneMapView: MKMapView! {
         didSet {
@@ -27,27 +29,26 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
     @IBAction func buttonDidTapped(_ sender: Any) {
         print("IsochroneViewController: \(#function)")
         loadIsochrone()
-        DispatchQueue.main.async {
-            self.createPolyLine()
-        }
     }
     @IBAction func clearButtonDidTapped(_ sender: Any) {
-        DispatchQueue.main.async {
-            self.removeAllPolyLines()
-        }
+        self.removeAllPolyLines()
     }
     
     @IBAction func realignButtonDidTapped(_ sender: Any) {
         print("\(#function)")
+        realignView()
+    }
+    func realignView() {
         if let lat = sharedIsochoneModel.inputLatDouble, let lng = sharedIsochoneModel.inputLngDouble {
             print("   lat: \(lat), lng: \(lng)")
             let currentLocation = CLLocationCoordinate2D(latitude: lat, longitude: lng)
             
-            let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+            let span = MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
             let region = MKCoordinateRegion(center: currentLocation, span: span)
-            DispatchQueue.main.async { [self] in
-                isochroneMapView.setRegion(region, animated: true)
-            }
+            isochroneMapView.setRegion(region, animated: true)
+//            DispatchQueue.main.async { [self] in
+//
+//            }
         }
     }
     
@@ -60,15 +61,33 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
         let region = MKCoordinateRegion(center: myInitLocation, span: span)
         isochroneMapView.setRegion(region, animated: true)
         
-        
+    }
+    override func viewWillAppear(_ animated: Bool) {
         /*
          uncomment loadIsochone to enable the api again.
          */
-        DispatchQueue.main.async { [self] in
-            loadIsochrone()
+        if let query = sharedIsochoneModel.inputAddress {
+            geocodeAddress(addressInput: query)
+            sharedIsochoneModel.inputAddress = nil
+        } else {
+            self.realignView()
+            self.loadIsochrone()
+        }
+        
+        
+    }
+    func geocodeAddress(addressInput: String) {
+        sharedGeocodingModel.setAddress(input: addressInput)
+        self.sharedGeocodingModel.geocode { i in
+            DispatchQueue.main.async {
+                self.sharedGeocodingModel.outputCoordinates = i
+                IsochroneModel.shared.setLatLong(lat: self.sharedGeocodingModel.outputCoordinates.latitude, lng: self.sharedGeocodingModel.outputCoordinates.longitude)
+                self.realignView()
+                self.loadIsochrone()
+            }
+            
         }
     }
-    
     
     /*
      SECTION: Making the polyLine, this uses the IsochroneModel
@@ -149,14 +168,16 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
 //        }
 //    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let inputViewController = segue.destination as? input_isochroneViewController
-        {
-            DispatchQueue.main.async {
-                
-                inputViewController.inputParametersChanged = {
-        //                self.loadIsochrone()
-                }
-            }
-        }
+//        if let inputViewController = segue.destination as? input_isochroneViewController
+//        {
+//            DispatchQueue.main.async {
+//
+//                inputViewController.inputParametersChanged = {
+//                    // you can add stuff to get rid of the previous isochrone map.
+////                    self.removeAllPolyLines()
+////                    self.loadIsochrone()
+//                }
+//            }
+//        }
     }
 }

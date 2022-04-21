@@ -1,0 +1,51 @@
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "2uj-tF-TOX"; */
+"2uj-tF-TOX.title" = "Done";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "A5f-K0-TUO"; */
+"A5f-K0-TUO.text" = "Address";
+
+/* Class = "UIButton"; configuration.title = "Clear"; ObjectID = "DEq-Lh-7vN"; */
+"DEq-Lh-7vN.configuration.title" = "Clear";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "DEq-Lh-7vN"; */
+"DEq-Lh-7vN.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "P7i-7u-rJU"; */
+"P7i-7u-rJU.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Load"; ObjectID = "PWh-9l-iZn"; */
+"PWh-9l-iZn.configuration.title" = "Load";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "PWh-9l-iZn"; */
+"PWh-9l-iZn.normalTitle" = "Button";
+
+/* Class = "UIBarButtonItem"; title = "Modify"; ObjectID = "boo-Vl-NhG"; */
+"boo-Vl-NhG.title" = "Modify";
+
+/* Class = "UIButton"; configuration.title = "Print"; ObjectID = "eoa-0c-Ivo"; */
+"eoa-0c-Ivo.configuration.title" = "Print";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "eoa-0c-Ivo"; */
+"eoa-0c-Ivo.normalTitle" = "Button";
+
+/* Class = "UITabBarItem"; title = "Isochrone"; ObjectID = "ga4-4V-lEL"; */
+"ga4-4V-lEL.title" = "Isochrone";
+
+/* Class = "UILabel"; text = "Mode of Transport"; ObjectID = "gjd-gP-q18"; */
+"gjd-gP-q18.text" = "Mode of Transport";
+
+/* Class = "UIButton"; configuration.title = "PolyLine"; ObjectID = "ilC-N5-6db"; */
+"ilC-N5-6db.configuration.title" = "PolyLine";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ilC-N5-6db"; */
+"ilC-N5-6db.normalTitle" = "Button";
+
+/* Class = "UITabBarItem"; title = "Route"; ObjectID = "kZA-zM-w4c"; */
+"kZA-zM-w4c.title" = "Route";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "pXZ-d2-cTf"; */
+"pXZ-d2-cTf.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Mode of Transport"; ObjectID = "rOi-N3-2go"; */
+"rOi-N3-2go.text" = "Mode of Transport";

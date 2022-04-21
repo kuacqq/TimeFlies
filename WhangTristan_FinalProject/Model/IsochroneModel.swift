@@ -9,7 +9,7 @@ import Foundation
 
 class IsochroneModel {
     static let shared = IsochroneModel()
-    
+    var inputAddress: String? 
     var ACCESS_KEY = "34acafbe0724fd45d6d83e02cfa92392"
     var APPLICATION_ID = "d9b90531"
     var inputLngDouble: Double? = -0.128315

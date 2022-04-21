@@ -31,20 +31,20 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
     @IBAction func doneButtonDidPressed(_ sender: Any) {
         print("input_isochroneViewController: \(#function):")
         if (addressTextField.text != "") {
+            print("   text field not empty")
             let date = timePicker.calendar.dateComponents([.hour, .minute], from: timePicker.date)
             let hourValue = date.hour ?? 1
             let minValue = date.minute ?? 0
 
             let travelTimeCalculated: Int = ((hourValue * 60) + minValue) * 60
             
-            geocodeAddress(addressInput: addressTextField.text!)
-//            print("geocode lat: \(sharedGeocodingModel.outputCoordinates.latitude), lng: \(sharedGeocodingModel.outputCoordinates.longitude)")
-//            IsochroneModel.shared.changeInputs(lat: sharedGeocodingModel.outputCoordinates.latitude, lng: sharedGeocodingModel.outputCoordinates.longitude, modeOfTransport: JSON_TRANSPORT_MODE_ARRAY[pickerView.selectedRow(inComponent: 0)], travelTime: travelTimeCalculated)
+//            geocodeAddress(addressInput: addressTextField.text!)
+            IsochroneModel.shared.inputAddress = addressTextField.text!
             IsochroneModel.shared.setTime(travelTime: travelTimeCalculated)
             IsochroneModel.shared.setModeOfTransport(mode: JSON_TRANSPORT_MODE_ARRAY[pickerView.selectedRow(inComponent: 0)])
             
             navigationController?.popViewController(animated: true)
-            inputParametersChanged?()
+//            self.dismiss(animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "No address entered", message: "Please enter a new address to load a new isochone.", preferredStyle: .alert)
             let okayAction = UIAlertAction(title: "Okay", style: .default)
@@ -53,13 +53,21 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
         }
         
     }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let isochroneViewController = segue.destination as? IsochroneViewController {
+//            isochroneViewController.query = addressTextField.text
+//        }
+//    }
     
     
     func geocodeAddress(addressInput: String) {
         sharedGeocodingModel.setAddress(input: addressInput)
         self.sharedGeocodingModel.geocode { i in
-            self.sharedGeocodingModel.outputCoordinates = i
-            IsochroneModel.shared.setLatLong(lat: self.sharedGeocodingModel.outputCoordinates.latitude, lng: self.sharedGeocodingModel.outputCoordinates.longitude)
+            DispatchQueue.main.async {
+                self.sharedGeocodingModel.outputCoordinates = i
+                IsochroneModel.shared.setLatLong(lat: self.sharedGeocodingModel.outputCoordinates.latitude, lng: self.sharedGeocodingModel.outputCoordinates.longitude)
+            }
+            
         }
     }
     

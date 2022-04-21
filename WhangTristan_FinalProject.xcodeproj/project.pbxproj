@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA1A07EF2810E49800187FCF /* LocalizableStrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA1A07EE2810E49800187FCF /* LocalizableStrings.strings */; };
 		EAEA5B612800B37A00A7AC7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B602800B37A00A7AC7C /* AppDelegate.swift */; };
 		EAEA5B632800B37A00A7AC7C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B622800B37A00A7AC7C /* SceneDelegate.swift */; };
 		EAEA5B652800B37A00A7AC7C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B642800B37A00A7AC7C /* ViewController.swift */; };
@@ -48,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EA1A07EE2810E49800187FCF /* LocalizableStrings.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = LocalizableStrings.strings; sourceTree = "<group>"; };
+		EA1A07F02810E4B200187FCF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		EA1A07F12810E4B200187FCF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		EAEA5B5D2800B37A00A7AC7C /* WhangTristan_FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhangTristan_FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAEA5B602800B37A00A7AC7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAEA5B622800B37A00A7AC7C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 				EAEA5B932800B6D300A7AC7C /* Controller */,
 				EAEA5B692800B37C00A7AC7C /* Assets.xcassets */,
 				EAEA5B6E2800B37C00A7AC7C /* Info.plist */,
+				EA1A07EE2810E49800187FCF /* LocalizableStrings.strings */,
 			);
 			path = WhangTristan_FinalProject;
 			sourceTree = "<group>";
@@ -273,6 +278,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = EAEA5B542800B37A00A7AC7C;
 			productRefGroup = EAEA5B5E2800B37A00A7AC7C /* Products */;
@@ -293,6 +299,7 @@
 			files = (
 				EAEA5B6D2800B37C00A7AC7C /* LaunchScreen.storyboard in Resources */,
 				EAEA5B6A2800B37C00A7AC7C /* Assets.xcassets in Resources */,
+				EA1A07EF2810E49800187FCF /* LocalizableStrings.strings in Resources */,
 				EAEA5B682800B37A00A7AC7C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,6 +380,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				EAEA5B672800B37A00A7AC7C /* Base */,
+				EA1A07F02810E4B200187FCF /* ko */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -381,6 +389,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				EAEA5B6C2800B37C00A7AC7C /* Base */,
+				EA1A07F12810E4B200187FCF /* ko */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -392,6 +401,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -452,6 +462,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

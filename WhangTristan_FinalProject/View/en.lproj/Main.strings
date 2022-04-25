@@ -3,7 +3,7 @@
 "2uj-tF-TOX.title" = "Done";
 
 /* Class = "UILabel"; text = "Address"; ObjectID = "A5f-K0-TUO"; */
-"A5f-K0-TUO.text" = "주속";
+"A5f-K0-TUO.text" = "Address";
 
 /* Class = "UIButton"; configuration.title = "Clear"; ObjectID = "DEq-Lh-7vN"; */
 "DEq-Lh-7vN.configuration.title" = "Clear";

@@ -15,6 +15,7 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
     @IBOutlet weak var modeOfTransportPicker: UIPickerView!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var holderView: UIView!
+    @IBOutlet weak var addressLabel: UILabel!
     
     var inputParametersChanged: (()->Void)?
     
@@ -25,6 +26,12 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
         // Do any additional setup after loading the view.
         print("input_isochroneViewController: \(#function)")
         
+        print("should print this: \(NSLocalizedString("address_label_text", comment: "ee"))")
+        addressLabel.text = NSLocalizedString("address_label_text", comment: "dffs")
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        print("should print this: \(NSLocalizedString("address_label_text", comment: "ddfs"))")
+        addressLabel.text = NSLocalizedString("address_label_text", comment: "asdf")
     }
     
     

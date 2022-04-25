@@ -70,8 +70,8 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
             geocodeAddress(addressInput: query)
             sharedIsochoneModel.inputAddress = nil
         } else {
-            self.realignView()
-            self.loadIsochrone()
+//            self.realignView()
+//            self.loadIsochrone()
         }
         
         

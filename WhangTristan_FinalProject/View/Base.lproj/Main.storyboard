@@ -248,6 +248,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addressLabel" destination="A5f-K0-TUO" id="HYR-K4-Cna"/>
                         <outlet property="addressTextField" destination="MXE-6j-ME8" id="D9v-Qz-Hd0"/>
                         <outlet property="holderView" destination="pmL-rd-oTP" id="YAu-AQ-SP4"/>
                         <outlet property="pickerView" destination="zr9-Ls-NR6" id="clk-8z-sa1"/>

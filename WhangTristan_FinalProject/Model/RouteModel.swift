@@ -11,10 +11,11 @@ import CoreLocation
 class RouteModel: NSObject, RouteDataModel {
     
     static let shared = RouteModel()
+    let testingMode: Bool = true
     var locationArray: [Location]
     var coordinatesArray: [CLLocationCoordinate2D]
     var date: Date
-    
+
     override init() {
         self.coordinatesArray = []
         self.locationArray = []
@@ -24,6 +25,11 @@ class RouteModel: NSObject, RouteDataModel {
     func addLocation(lng: Double, lat: Double, hrsSpent: Int, minSpent: Int) {
         print("\(#function)")
         let pin: Location = Location(lng, lat, hrsSpent, minSpent)
+        locationArray.append(pin)
+    }
+    func addLocation(lng: Double, lat: Double, secSpent: Int) {
+        print("\(#function)")
+        let pin: Location = Location(lng, lat, secSpent)
         locationArray.append(pin)
     }
     

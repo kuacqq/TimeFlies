@@ -17,10 +17,21 @@ struct Location {
     var hoursSpent: Int
     var minutesSpent: Int
     
+    // for testing purposes
+    var secondsSpent: Int
+    
     init(_ longitude: Double, _ latitude: Double, _ hoursSpent: Int, _ minutesSpent: Int) {
         self.longitude = longitude
         self.latitude = latitude
         self.hoursSpent = hoursSpent
         self.minutesSpent = minutesSpent
+        self.secondsSpent = 0
+    }
+    init(_ longitude: Double, _ latitude: Double, _ secondsSpent: Int) {
+        self.longitude = longitude
+        self.latitude = latitude
+        self.hoursSpent = 0
+        self.minutesSpent = 0
+        self.secondsSpent = secondsSpent
     }
 }

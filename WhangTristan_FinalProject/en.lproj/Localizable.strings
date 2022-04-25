@@ -23,4 +23,7 @@
 "clear_text" = "Clear";
 "load_text" = "Load";
 
+"hr_text" = "hr";
+"min_text" = "min";
+"sec_text" = "sec";
 

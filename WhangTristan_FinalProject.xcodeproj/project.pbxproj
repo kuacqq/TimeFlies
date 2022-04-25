@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		EA0C0DA32816595A00FF49F9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA0C0DA52816595A00FF49F9 /* Localizable.strings */; };
+		EA8939F2281667ED004F981B /* TravelRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8939F1281667ED004F981B /* TravelRecordViewController.swift */; };
+		EA8939F428166B74004F981B /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8939F328166B74004F981B /* RecordTableViewCell.swift */; };
 		EAEA5B612800B37A00A7AC7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B602800B37A00A7AC7C /* AppDelegate.swift */; };
 		EAEA5B632800B37A00A7AC7C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B622800B37A00A7AC7C /* SceneDelegate.swift */; };
 		EAEA5B652800B37A00A7AC7C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B642800B37A00A7AC7C /* ViewController.swift */; };
@@ -54,6 +56,8 @@
 		EA0C0DA62816595B00FF49F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA1A07F02810E4B200187FCF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		EA1A07F12810E4B200187FCF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		EA8939F1281667ED004F981B /* TravelRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelRecordViewController.swift; sourceTree = "<group>"; };
+		EA8939F328166B74004F981B /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		EAEA5B5D2800B37A00A7AC7C /* WhangTristan_FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhangTristan_FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAEA5B602800B37A00A7AC7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAEA5B622800B37A00A7AC7C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +174,8 @@
 		EAEA5B932800B6D300A7AC7C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EA8939F1281667ED004F981B /* TravelRecordViewController.swift */,
+				EA8939F328166B74004F981B /* RecordTableViewCell.swift */,
 				EAEA5B642800B37A00A7AC7C /* ViewController.swift */,
 				EAEA5BAF2804D81000A7AC7C /* input_isochroneViewController.swift */,
 				EAEA5B9B280136EA00A7AC7C /* MapRouteViewController.swift */,
@@ -330,6 +336,7 @@
 				EAEA5BA2280254F100A7AC7C /* IsochroneModel.swift in Sources */,
 				EAEA5BA0280254DF00A7AC7C /* IsochroneViewController.swift in Sources */,
 				EAEA5B962800B6FF00A7AC7C /* Location.swift in Sources */,
+				EA8939F428166B74004F981B /* RecordTableViewCell.swift in Sources */,
 				EAEA5B652800B37A00A7AC7C /* ViewController.swift in Sources */,
 				EAEA5B9E28013FF600A7AC7C /* MapTrackingViewController.swift in Sources */,
 				EAEB9358280A448A0055A442 /* GeocodingModel.swift in Sources */,
@@ -341,6 +348,7 @@
 				EAEA5B9A2800B96500A7AC7C /* RouteDataModel.swift in Sources */,
 				EAEA5BAE2803908F00A7AC7C /* Output.swift in Sources */,
 				EAEB935A280A488A0055A442 /* GeocodeResponse.swift in Sources */,
+				EA8939F2281667ED004F981B /* TravelRecordViewController.swift in Sources */,
 				EAEA5BB02804D81000A7AC7C /* input_isochroneViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

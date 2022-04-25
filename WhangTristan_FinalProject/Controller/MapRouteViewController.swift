@@ -46,7 +46,7 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     }
     @IBAction func recenterButtonDidTapped(_ sender: Any) {
         if let currentLocation = locationManager.location?.coordinate {
-            let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+            let span = MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07)
             let region = MKCoordinateRegion(center: currentLocation, span: span)
             mapView.setRegion(region, animated: true)
         }
@@ -58,7 +58,7 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         super.viewDidLoad()
         
         // core location setup
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.distanceFilter = 10
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
@@ -127,10 +127,17 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         print("\(#function)")
         print("   timeDifference: \(timeDifference)")
         if (timeDifference >= 10) {
+            print("   adding location: (\(loc.coordinate.latitude), \(loc.coordinate.longitude))")
+            let secondsSpent = Int(timeDifference) % 60
             var minutesSpent = Int(timeDifference / 60)
             let hoursSpent = Int(minutesSpent / 60)
             minutesSpent = minutesSpent % 60
-            route.addLocation(lng: loc.coordinate.longitude, lat: loc.coordinate.latitude, hrsSpent: hoursSpent, minSpent: minutesSpent)
+            
+            if (RouteModel.shared.testingMode) {
+                route.addLocation(lng: loc.coordinate.longitude, lat: loc.coordinate.latitude, secSpent: secondsSpent)
+            } else {
+                route.addLocation(lng: loc.coordinate.longitude, lat: loc.coordinate.latitude, hrsSpent: hoursSpent, minSpent: minutesSpent)
+            }
             self.lastTimeMeasurement = currentTime
         }
         

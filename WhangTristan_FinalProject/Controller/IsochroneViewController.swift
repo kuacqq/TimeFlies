@@ -70,8 +70,8 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
             geocodeAddress(addressInput: query)
             sharedIsochoneModel.inputAddress = nil
         } else {
-//            self.realignView()
-//            self.loadIsochrone()
+            self.realignView()
+            self.loadIsochrone()
         }
         
         
@@ -104,6 +104,13 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
             isochroneMapView.addOverlay(polyLine)
         }
     }
+    func addPolygon() {
+        print("IsochroneViewController: \(#function)")
+        for shell in coordinatesToMap {
+            let polygon = MKPolygon(coordinates: shell, count: shell.count)
+            isochroneMapView.addOverlay(polygon)
+        }
+    }
     
     func removeAllPolyLines() {
         let currentOverlays = self.isochroneMapView.overlays
@@ -118,6 +125,10 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
             polyLineRender.strokeColor = UIColor.purple.withAlphaComponent(0.5)
             polyLineRender.lineWidth = 3
             return polyLineRender
+        } else if (overlay is MKPolygon) {
+            let polygonRender = MKPolygonRenderer(overlay: overlay)
+            polygonRender.fillColor = UIColor.blue.withAlphaComponent(0.2)
+            return polygonRender
         }
         return MKOverlayRenderer()
     }
@@ -152,7 +163,8 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
                     featureCounter += 1
                 }
                 print("featureCounter: \(featureCounter)" )
-                self.createPolyLine()
+//                self.createPolyLine()
+                self.addPolygon()
             }
         }
         print("\(#function): FINISHED")

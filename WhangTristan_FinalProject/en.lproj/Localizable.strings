@@ -6,3 +6,21 @@
   
 */
 "address_label_text" = "Address";
+"mode_of_transport_text" = "Mode of Transport";
+"travel_time_text" = "Travel Time";
+
+"cycling_text" = "Cycling";
+"driving_text" = "Driving";
+"public_transport_text" = "Public Transport";
+"walking_text" = "Walking";
+"bus_text" = "Bus";
+"train_text" = "Train";
+
+"modify_text" = "Modify";
+"isochrone_text" = "Isochrone";
+"route_text" = "Route";
+
+"clear_text" = "Clear";
+"load_text" = "Load";
+
+

@@ -16,6 +16,8 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var modeOfTransportLabel: UILabel!
+    @IBOutlet weak var travelTimeLabel: UILabel!
     
     var inputParametersChanged: (()->Void)?
     
@@ -26,12 +28,16 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
         // Do any additional setup after loading the view.
         print("input_isochroneViewController: \(#function)")
         
-        print("should print this: \(NSLocalizedString("address_label_text", comment: "ee"))")
-        addressLabel.text = NSLocalizedString("address_label_text", comment: "dffs")
+        print("should print this: \(NSLocalizedString("address_label_text", comment: ""))")
+        addressLabel.text = NSLocalizedString("address_label_text", comment: "")
+        modeOfTransportLabel.text = NSLocalizedString("mode_of_transport_text", comment: "")
+        travelTimeLabel.text = NSLocalizedString("travel_time_text", comment: "")
     }
     override func viewWillAppear(_ animated: Bool) {
-        print("should print this: \(NSLocalizedString("address_label_text", comment: "ddfs"))")
-        addressLabel.text = NSLocalizedString("address_label_text", comment: "asdf")
+        print("should print this: \(NSLocalizedString("address_label_text", comment: ""))")
+        addressLabel.text = NSLocalizedString("address_label_text", comment: "")
+        modeOfTransportLabel.text = NSLocalizedString("mode_of_transport_text", comment: "")
+        travelTimeLabel.text = NSLocalizedString("travel_time_text", comment: "")
     }
     
     
@@ -92,8 +98,14 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
     /*
      modeOfTransportPicker functinos and attributes
      */
-    let TRANSPORT_MODE_ARRAY = ["Cycling", "Driving", "Public Transport", "Walking", "Bus", "Train", "Ferry"]
-    let JSON_TRANSPORT_MODE_ARRAY = ["cycling", "driving", "public_transport", "walking", "bus", "train", "ferry"]
+//    let TRANSPORT_MODE_ARRAY = ["Cycling", "Driving", "Public Transport", "Walking", "Bus", "Train"]
+    let TRANSPORT_MODE_ARRAY = [NSLocalizedString("cycling_text", comment: ""),
+                                NSLocalizedString("driving_text", comment: ""),
+                                NSLocalizedString("public_transport_text", comment: ""),
+                                NSLocalizedString("walking_text", comment: ""),
+                                NSLocalizedString("bus_text", comment: ""),
+                                NSLocalizedString("train_text", comment: "")]
+    let JSON_TRANSPORT_MODE_ARRAY = ["cycling", "driving", "public_transport", "walking", "bus", "train"]
     let NUMBER_OF_COMPONENTS = 1
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
 //        print("input_isochroneViewController: \(#function)")

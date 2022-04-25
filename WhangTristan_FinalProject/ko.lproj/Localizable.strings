@@ -7,3 +7,19 @@
 */
 
 "address_label_text" = "주소";
+"mode_of_transport_text" = "교통수단";
+"travel_time_text" = "소요시간";
+
+"cycling_text" = "자전거";
+"driving_text" = "자동차/택시";
+"public_transport_text" = "대중교통";
+"walking_text" = "도보";
+"bus_text" = "버스";
+"train_text" = "기차";
+
+"modify_text" = "Modify";
+"isochrone_text" = "Isochrone";
+"route_text" = "Route";
+
+"clear_text" = "Clear";
+"load_text" = "Load";

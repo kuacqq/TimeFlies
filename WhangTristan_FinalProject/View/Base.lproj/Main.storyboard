@@ -192,7 +192,7 @@
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vyW-XR-mgd">
                                         <rect key="frame" x="15" y="384" width="344" height="216"/>
                                     </datePicker>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mode of Transport" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOi-N3-2go">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Travel Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOi-N3-2go">
                                         <rect key="frame" x="20" y="356" width="339" height="28"/>
                                         <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="20"/>
                                         <nil key="textColor"/>
@@ -251,8 +251,10 @@
                         <outlet property="addressLabel" destination="A5f-K0-TUO" id="HYR-K4-Cna"/>
                         <outlet property="addressTextField" destination="MXE-6j-ME8" id="D9v-Qz-Hd0"/>
                         <outlet property="holderView" destination="pmL-rd-oTP" id="YAu-AQ-SP4"/>
+                        <outlet property="modeOfTransportLabel" destination="gjd-gP-q18" id="Ete-fw-GZM"/>
                         <outlet property="pickerView" destination="zr9-Ls-NR6" id="clk-8z-sa1"/>
                         <outlet property="timePicker" destination="vyW-XR-mgd" id="38r-Vc-vMY"/>
+                        <outlet property="travelTimeLabel" destination="rOi-N3-2go" id="aca-wk-apG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EnI-8E-Ftk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

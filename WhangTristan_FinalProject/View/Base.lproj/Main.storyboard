@@ -90,25 +90,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" id="von-Ya-j8G">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="dateDidChanged:" destination="EHc-Vu-vdP" eventType="valueChanged" id="tUT-7L-vCu"/>
+                                </connections>
+                            </datePicker>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="F6r-Pq-Q1f">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="80" width="414" height="816"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" id="Ka5-ag-A8x" customClass="RecordTableViewCell" customModule="WhangTristan_FinalProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="65"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="65.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ka5-ag-A8x" id="ZtD-1F-k33">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="65.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coordinates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNM-Jy-72Q">
-                                                    <rect key="frame" x="16" y="11" width="93" height="43"/>
+                                                    <rect key="frame" x="16" y="11" width="93" height="43.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7D3-iS-Nfg">
-                                                    <rect key="frame" x="352" y="22" width="38" height="21"/>
+                                                    <rect key="frame" x="352" y="22" width="38" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -140,12 +147,14 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="F6r-Pq-Q1f" secondAttribute="bottom" id="3Gr-VC-cF9"/>
                             <constraint firstItem="F6r-Pq-Q1f" firstAttribute="trailing" secondItem="zKU-VN-xP1" secondAttribute="trailing" id="6GM-Me-uT6"/>
-                            <constraint firstItem="F6r-Pq-Q1f" firstAttribute="top" secondItem="pFU-9N-iKC" secondAttribute="top" id="N9I-9U-BOm"/>
+                            <constraint firstItem="F6r-Pq-Q1f" firstAttribute="top" secondItem="pFU-9N-iKC" secondAttribute="top" constant="80" id="N9I-9U-BOm"/>
+                            <constraint firstItem="von-Ya-j8G" firstAttribute="centerX" secondItem="F6r-Pq-Q1f" secondAttribute="centerX" id="Zgp-jL-5LF"/>
                             <constraint firstItem="F6r-Pq-Q1f" firstAttribute="leading" secondItem="zKU-VN-xP1" secondAttribute="leading" id="qkQ-fx-X0Y"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Record" image="filemenu.and.selection" catalog="system" id="n2e-xC-PZm"/>
                     <connections>
+                        <outlet property="datePicker" destination="von-Ya-j8G" id="ZC9-Wf-Dhk"/>
                         <outlet property="tableView" destination="F6r-Pq-Q1f" id="Rpg-0T-fMd"/>
                     </connections>
                 </viewController>

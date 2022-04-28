@@ -37,8 +37,9 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     }
     @IBAction func printButtonDidTapped(_ sender: Any) {
         print("\(#function): PRINTER")
-        print("   route.locationArray: \(route.locationArray)")
+        print("   route.locationArray: \(String(describing: route.locationArray))")
         print("   lastMeasuredTime: \(lastTimeMeasurement)")
+        print("   locationMap: \(String(describing: route.locationMap))")
         if let curLocation = locationManager.location {
             self.shouldIAddLocation(loc: curLocation)
         }
@@ -56,6 +57,7 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     override func viewDidLoad() {
         print("MapRouteViewController: \(#function)")
         super.viewDidLoad()
+        route.setUpToday()
         
         // core location setup
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
@@ -106,12 +108,12 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
      these are some really important methods that you will always use
      */
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("MapRouteViewController: \(#function)")
+//        print("MapRouteViewController: \(#function)")
         // optional binding
         if let location = locations.first {
             // there is a lot you can access from CLLocation, like time, altitude, literally
             // everything. You will need it for your project
-            print("user location : lat \(location.coordinate.latitude), lng \(location.coordinate.longitude)")
+//            print("user location : lat \(location.coordinate.latitude), lng \(location.coordinate.longitude)")
             route.addCorrdinate(coords: location.coordinate)
             self.shouldIAddLocation(loc: location)
         }

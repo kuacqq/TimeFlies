@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct Location {
+
+
+struct Location: Codable {
     var longitude: Double
     var latitude: Double
     

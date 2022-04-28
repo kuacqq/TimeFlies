@@ -46,9 +46,6 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
             let span = MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
             let region = MKCoordinateRegion(center: currentLocation, span: span)
             isochroneMapView.setRegion(region, animated: true)
-//            DispatchQueue.main.async { [self] in
-//
-//            }
         }
     }
     
@@ -70,8 +67,8 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
             geocodeAddress(addressInput: query)
             sharedIsochoneModel.inputAddress = nil
         } else {
-            self.realignView()
-            self.loadIsochrone()
+//            self.realignView()
+//            self.loadIsochrone()
         }
         
         

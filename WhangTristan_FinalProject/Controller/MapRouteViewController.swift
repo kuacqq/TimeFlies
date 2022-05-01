@@ -47,7 +47,7 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     }
     @IBAction func recenterButtonDidTapped(_ sender: Any) {
         if let currentLocation = locationManager.location?.coordinate {
-            let span = MKCoordinateSpan(latitudeDelta: 0.07, longitudeDelta: 0.07)
+            let span = MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007)
             let region = MKCoordinateRegion(center: currentLocation, span: span)
             mapView.setRegion(region, animated: true)
         }

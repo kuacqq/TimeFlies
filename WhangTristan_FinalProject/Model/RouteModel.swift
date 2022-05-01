@@ -17,7 +17,7 @@ class RouteModel: NSObject, RouteDataModel {
     var today: DateComponents
     var locationFilePath: String
 //    var locationMap: [DateComponents: [Location]]?
-    var locationMap: [Int: [Location]]?
+    var locationMap: [DateComponents: [Location]]?
 
     override init() {
         print("Route Model: \(#function)")
@@ -25,7 +25,7 @@ class RouteModel: NSObject, RouteDataModel {
         self.coordinatesArray = []
 //        self.locationArray = []
         self.today = DateComponents()
-        self.locationMap = [Int: [Location]]()
+        self.locationMap = [DateComponents: [Location]]()
         
         
         // Deal with files
@@ -55,12 +55,12 @@ class RouteModel: NSObject, RouteDataModel {
         print("Route Model: \(#function)")
         print("   \(self.today)")
         if let locationMap = self.locationMap {
-            if let _ = locationMap[self.today.day!], let locationArray = self.locationArray {
+            if let _ = locationMap[self.today], let locationArray = self.locationArray {
                 print("\(#function): if")
-                self.locationMap![self.today.day!]!.append(contentsOf: locationArray)
+                self.locationMap![self.today]!.append(contentsOf: locationArray)
             } else {
                 print("\(#function): else")
-                self.locationMap![self.today.day!] = locationArray
+                self.locationMap![self.today] = locationArray
             }
         } else {
             return
@@ -84,7 +84,7 @@ class RouteModel: NSObject, RouteDataModel {
             let data = try Data(contentsOf: filePath)
             let decoder = JSONDecoder()
 //            self.locationMap = try decoder.decode([DateComponents: [Location]].self, from: data )
-            self.locationMap = try decoder.decode([Int: [Location]].self, from: data )
+            self.locationMap = try decoder.decode([DateComponents: [Location]].self, from: data )
             print("   \(String(describing: self.locationMap))")
         } catch {
             print("there is an error with encoding \(error)")
@@ -94,7 +94,7 @@ class RouteModel: NSObject, RouteDataModel {
     func addLocation(lng: Double, lat: Double, hrsSpent: Int, minSpent: Int) {
         print("Route Model: \(#function)")
         let pin: Location = Location(lng, lat, hrsSpent, minSpent)
-        if let locationArray = locationArray {
+        if let _ = locationArray {
             self.locationArray!.append(pin)
         }
         save()
@@ -102,7 +102,7 @@ class RouteModel: NSObject, RouteDataModel {
     func addLocation(lng: Double, lat: Double, secSpent: Int) {
         print("Route Model: \(#function): \(self.today)")
         let pin: Location = Location(lng, lat, secSpent)
-        if let locationArray = locationArray {
+        if let _ = locationArray {
             self.locationArray!.append(pin)
         }
         save()

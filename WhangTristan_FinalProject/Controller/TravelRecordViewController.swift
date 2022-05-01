@@ -15,6 +15,7 @@ class TravelRecordViewController: UIViewController, UITableViewDelegate, UITable
     
     var dateWeAreLookingAt: DateComponents = DateComponents()
     override func viewDidLoad() {
+        print("TRVC: \(#function)")
         super.viewDidLoad()
         let date = Date.now
         self.dateWeAreLookingAt = Calendar.current.dateComponents([.day, .year, .month], from: date)
@@ -22,25 +23,29 @@ class TravelRecordViewController: UIViewController, UITableViewDelegate, UITable
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
+        print("TRVC: \(#function)")
         tableView.reloadData()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let locationArray = sharedRouteModel.locationArray {
-            return locationArray.count
+        print("TRVC: \(#function)")
+        if let currentLocationArray = sharedRouteModel.locationMap![self.dateWeAreLookingAt] {
+            print("   returning Count: \(currentLocationArray.count)")
+            return currentLocationArray.count
         }
         return 0
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("   TRVC: \(#function)")
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell") as! RecordTableViewCell
         if let locationMap = sharedRouteModel.locationMap {
-            if let locationArray = locationMap[dateWeAreLookingAt.day!] {
+            if let locationArray = locationMap[dateWeAreLookingAt] {
                 let lngDouble = locationArray[indexPath.row].longitude
                 let latDouble = locationArray[indexPath.row].latitude
                 
-                let lat = String(format: "%.2f", latDouble)
-                let lng = String(format: "%.2f", lngDouble)
+                let lat = String(format: "%.3f", latDouble)
+                let lng = String(format: "%.3f", lngDouble)
                 cell.coordinatesLabel?.text = "\(lat), \(lng)"
                 
                 let hrs = locationArray[indexPath.row].hoursSpent
@@ -57,7 +62,9 @@ class TravelRecordViewController: UIViewController, UITableViewDelegate, UITable
     }
     @IBAction func dateDidChanged(_ sender: Any) {
         let date = datePicker.date
-        dateWeAreLookingAt = datePicker.calendar.dateComponents([.day, .year, .month], from: date)
+        self.dateWeAreLookingAt = datePicker.calendar.dateComponents([.day, .year, .month], from: date)
+        print("\(#function): \(dateWeAreLookingAt)")
+        print("   \(String(describing: sharedRouteModel.locationMap![dateWeAreLookingAt]))")
         tableView.reloadData()
     }
 }

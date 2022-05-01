@@ -67,4 +67,9 @@ class TravelRecordViewController: UIViewController, UITableViewDelegate, UITable
         print("   \(String(describing: sharedRouteModel.locationMap![dateWeAreLookingAt]))")
         tableView.reloadData()
     }
+    
+    @IBAction func testVsRealDidChange(_ sender: Any) {
+        
+    }
+    
 }

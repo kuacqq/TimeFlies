@@ -20,7 +20,10 @@ class TravelRecordViewController: UIViewController, UITableViewDelegate, UITable
         let date = Date.now
         self.dateWeAreLookingAt = Calendar.current.dateComponents([.day, .year, .month], from: date)
 
-        // Do any additional setup after loading the view.
+        /*
+         Localize the labels
+         */
+        localizeSegmentedControl()
     }
     override func viewWillAppear(_ animated: Bool) {
         print("TRVC: \(#function)")
@@ -52,7 +55,7 @@ class TravelRecordViewController: UIViewController, UITableViewDelegate, UITable
                 let min = locationArray[indexPath.row].minutesSpent
                 let sec = locationArray[indexPath.row].secondsSpent
                 if (RouteModel.shared.testingMode) {
-                    cell.timeLabel.text = "\(sec) \(NSLocalizedString("sec", comment: ""))"
+                    cell.timeLabel.text = "\(sec) \(NSLocalizedString("sec_text", comment: ""))"
                 } else {
                     cell.timeLabel.text = "\(hrs) \(NSLocalizedString("hr_text", comment: "")) \(min) \(NSLocalizedString("min_text", comment: ""))"
                 }
@@ -72,4 +75,12 @@ class TravelRecordViewController: UIViewController, UITableViewDelegate, UITable
         
     }
     
+    /*
+    Localization
+    */
+    @IBOutlet weak var testRealSegmentedControl: UISegmentedControl!
+    func localizeSegmentedControl() {
+        testRealSegmentedControl.setTitle(NSLocalizedString("test_text", comment: ""), forSegmentAt: 0)
+        testRealSegmentedControl.setTitle(NSLocalizedString("real_text", comment: ""), forSegmentAt: 1)
+    }
 }

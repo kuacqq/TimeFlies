@@ -17,7 +17,7 @@
 "walking_text" = "Walking";
 "bus_text" = "Bus";
 "train_text" = "Train";
-"Done" = "Done";
+"done_text" = "Done";
 
 // Isochrone View Controller
 "modify_text" = "Modify";
@@ -35,5 +35,5 @@
 "min_text" = "min";
 "sec_text" = "sec";
 "test_text" = "Test";
-"Real" = "Real";
+"real_text" = "Real";
 

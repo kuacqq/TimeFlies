@@ -8,10 +8,9 @@
 import Foundation
 import CoreLocation
 
-class RouteModel: NSObject, RouteDataModel {
-    
+class RouteModel: NSObject {
     static let shared = RouteModel()
-    let testingMode: Bool = true
+    var testingMode: Bool = false
     var locationArray: [Location]?
     var coordinatesArray: [CLLocationCoordinate2D]
     var today: DateComponents
@@ -21,9 +20,7 @@ class RouteModel: NSObject, RouteDataModel {
 
     override init() {
         print("Route Model: \(#function)")
-//        self.locationMap = DateLocationMap(dateLocationMap: [Date: [Location]])
         self.coordinatesArray = []
-//        self.locationArray = []
         self.today = DateComponents()
         self.locationMap = [DateComponents: [Location]]()
         
@@ -36,12 +33,6 @@ class RouteModel: NSObject, RouteDataModel {
         super.init()
         self.setUpToday()
         self.load()
-        
-//        if let tempLocationMap = locationMap {
-//            self.locationArray = tempLocationMap[self.today.day!]
-//        } else {
-//            self.locationArray = []
-//        }
         self.locationArray = []
     }
     func setUpToday() {
@@ -91,14 +82,6 @@ class RouteModel: NSObject, RouteDataModel {
         }
     }
     
-    func addLocation(lng: Double, lat: Double, hrsSpent: Int, minSpent: Int) {
-        print("Route Model: \(#function)")
-        let pin: Location = Location(lng, lat, hrsSpent, minSpent)
-        if let _ = locationArray {
-            self.locationArray!.append(pin)
-        }
-        save()
-    }
     func addLocation(lng: Double, lat: Double, secSpent: Int) {
         print("Route Model: \(#function): \(self.today)")
         let pin: Location = Location(lng, lat, secSpent)

@@ -19,10 +19,11 @@ class TravelRecordViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         let date = Date.now
         self.dateWeAreLookingAt = Calendar.current.dateComponents([.day, .year, .month], from: date)
-
+        
         /*
-         Localize the labels
+         initial gui setup
          */
+        setStartedSelectedSegment()
         localizeSegmentedControl()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -51,13 +52,15 @@ class TravelRecordViewController: UIViewController, UITableViewDelegate, UITable
                 let lng = String(format: "%.3f", lngDouble)
                 cell.coordinatesLabel?.text = "\(lat), \(lng)"
                 
-                let hrs = locationArray[indexPath.row].hoursSpent
-                let min = locationArray[indexPath.row].minutesSpent
-                let sec = locationArray[indexPath.row].secondsSpent
+                let time = locationArray[indexPath.row].secondsSpent
+                let sec = (time % 360)
+                let min = ((time - sec)/60) % 60
+                let hr = ((time - sec)/60 - min)/60
+                
                 if (RouteModel.shared.testingMode) {
                     cell.timeLabel.text = "\(sec) \(NSLocalizedString("sec_text", comment: ""))"
                 } else {
-                    cell.timeLabel.text = "\(hrs) \(NSLocalizedString("hr_text", comment: "")) \(min) \(NSLocalizedString("min_text", comment: ""))"
+                    cell.timeLabel.text = "\(hr) \(NSLocalizedString("hr_text", comment: "")) \(min) \(NSLocalizedString("min_text", comment: ""))"
                 }
             }
         }
@@ -71,8 +74,20 @@ class TravelRecordViewController: UIViewController, UITableViewDelegate, UITable
         tableView.reloadData()
     }
     
-    @IBAction func testVsRealDidChange(_ sender: Any) {
-        
+    @IBAction func testVsRealDidChange(_ sender: UISegmentedControl) {
+        let segment = sender.selectedSegmentIndex
+        // segment 0 is test and segment 1 is real
+        if (segment == 0) {
+            sharedRouteModel.testingMode = true
+        } else {
+            sharedRouteModel.testingMode = false
+        }
+        tableView.reloadData()
+    }
+    func setStartedSelectedSegment() {
+        if (sharedRouteModel.testingMode == false) {
+            testRealSegmentedControl.selectedSegmentIndex = 1
+        }
     }
     
     /*

@@ -27,14 +27,11 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
 
         // Do any additional setup after loading the view.
         print("input_isochroneViewController: \(#function)")
-        
-        print("should print this: \(NSLocalizedString("address_label_text", comment: ""))")
         addressLabel.text = NSLocalizedString("address_label_text", comment: "")
         modeOfTransportLabel.text = NSLocalizedString("mode_of_transport_text", comment: "")
         travelTimeLabel.text = NSLocalizedString("travel_time_text", comment: "")
     }
     override func viewWillAppear(_ animated: Bool) {
-        print("should print this: \(NSLocalizedString("address_label_text", comment: ""))")
         addressLabel.text = NSLocalizedString("address_label_text", comment: "")
         modeOfTransportLabel.text = NSLocalizedString("mode_of_transport_text", comment: "")
         travelTimeLabel.text = NSLocalizedString("travel_time_text", comment: "")

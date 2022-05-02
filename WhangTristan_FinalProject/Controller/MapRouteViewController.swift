@@ -121,28 +121,29 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     
     
     /*
-     I still have to make a decision as to how long in a specific place qualifies leaving a marker there.
+     In testing mode it will record the locations where you spend 10 seconds or more.
+     But in real mode, it will record the locations where you spend more than 5 minutes.
      */
     func shouldIAddLocation(loc: CLLocation) {
         let currentTime = Date()
         let timeDifference = currentTime.timeIntervalSince(self.lastTimeMeasurement)
         print("\(#function)")
         print("   timeDifference: \(timeDifference)")
-        if (timeDifference >= 10) {
-            print("   adding location: (\(loc.coordinate.latitude), \(loc.coordinate.longitude))")
+        //minimum time spent is the amount of time that you will spend in an
+        //area before it will make it a marker on the map.
+        var minimumTimeSpent: Double = 0
+        if (route.testingMode == true) {
+            minimumTimeSpent = 10
+        } else {
+            let minutes: Double = 5.0
+            minimumTimeSpent = (minutes * 60)
+        }
+        if (timeDifference >= minimumTimeSpent) {
+            print("   Testing Mode: adding location: (\(loc.coordinate.latitude), \(loc.coordinate.longitude))")
             let secondsSpent = Int(timeDifference) % 60
-            var minutesSpent = Int(timeDifference / 60)
-            let hoursSpent = Int(minutesSpent / 60)
-            minutesSpent = minutesSpent % 60
-            
-            if (RouteModel.shared.testingMode) {
-                route.addLocation(lng: loc.coordinate.longitude, lat: loc.coordinate.latitude, secSpent: secondsSpent)
-            } else {
-                route.addLocation(lng: loc.coordinate.longitude, lat: loc.coordinate.latitude, hrsSpent: hoursSpent, minSpent: minutesSpent)
-            }
+            route.addLocation(lng: loc.coordinate.longitude, lat: loc.coordinate.latitude, secSpent: secondsSpent)
             self.lastTimeMeasurement = currentTime
         }
-        
     }
     
     

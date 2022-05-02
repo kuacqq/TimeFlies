@@ -21,7 +21,6 @@
 		EAEA5B842800B37C00A7AC7C /* WhangTristan_FinalProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B832800B37C00A7AC7C /* WhangTristan_FinalProjectUITestsLaunchTests.swift */; };
 		EAEA5B962800B6FF00A7AC7C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B952800B6FF00A7AC7C /* Location.swift */; };
 		EAEA5B982800B7DB00A7AC7C /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B972800B7DB00A7AC7C /* RouteModel.swift */; };
-		EAEA5B9A2800B96500A7AC7C /* RouteDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B992800B96500A7AC7C /* RouteDataModel.swift */; };
 		EAEA5B9C280136EA00A7AC7C /* MapRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B9B280136EA00A7AC7C /* MapRouteViewController.swift */; };
 		EAEA5B9E28013FF600A7AC7C /* MapTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B9D28013FF600A7AC7C /* MapTrackingViewController.swift */; };
 		EAEA5BA0280254DF00A7AC7C /* IsochroneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B9F280254DF00A7AC7C /* IsochroneViewController.swift */; };
@@ -73,7 +72,6 @@
 		EAEA5B832800B37C00A7AC7C /* WhangTristan_FinalProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhangTristan_FinalProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EAEA5B952800B6FF00A7AC7C /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		EAEA5B972800B7DB00A7AC7C /* RouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteModel.swift; sourceTree = "<group>"; };
-		EAEA5B992800B96500A7AC7C /* RouteDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDataModel.swift; sourceTree = "<group>"; };
 		EAEA5B9B280136EA00A7AC7C /* MapRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRouteViewController.swift; sourceTree = "<group>"; };
 		EAEA5B9D28013FF600A7AC7C /* MapTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTrackingViewController.swift; sourceTree = "<group>"; };
 		EAEA5B9F280254DF00A7AC7C /* IsochroneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsochroneViewController.swift; sourceTree = "<group>"; };
@@ -193,7 +191,6 @@
 				EAEA5BAD2803908F00A7AC7C /* Output.swift */,
 				EAEA5B952800B6FF00A7AC7C /* Location.swift */,
 				EAEA5B972800B7DB00A7AC7C /* RouteModel.swift */,
-				EAEA5B992800B96500A7AC7C /* RouteDataModel.swift */,
 				EAEA5BA1280254F100A7AC7C /* IsochroneModel.swift */,
 				EAEA5BA9280271E300A7AC7C /* Results.swift */,
 			);
@@ -345,7 +342,6 @@
 				EAEA5BAA280271E300A7AC7C /* Results.swift in Sources */,
 				EAEA5B982800B7DB00A7AC7C /* RouteModel.swift in Sources */,
 				EAEA5B632800B37A00A7AC7C /* SceneDelegate.swift in Sources */,
-				EAEA5B9A2800B96500A7AC7C /* RouteDataModel.swift in Sources */,
 				EAEA5BAE2803908F00A7AC7C /* Output.swift in Sources */,
 				EAEB935A280A488A0055A442 /* GeocodeResponse.swift in Sources */,
 				EA8939F2281667ED004F981B /* TravelRecordViewController.swift in Sources */,

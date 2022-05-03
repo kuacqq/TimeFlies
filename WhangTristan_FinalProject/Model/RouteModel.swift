@@ -14,26 +14,31 @@ class RouteModel: NSObject {
     var locationArray: [Location]?
     var coordinatesArray: [CLLocationCoordinate2D]
     var today: DateComponents
+    var dayToDisplay: DateComponents
     var locationFilePath: String
-//    var locationMap: [DateComponents: [Location]]?
     var locationMap: [DateComponents: [Location]]?
 
     override init() {
         print("Route Model: \(#function)")
         self.coordinatesArray = []
         self.today = DateComponents()
+        dayToDisplay = self.today
         self.locationMap = [DateComponents: [Location]]()
         
+        print("   self.testingMode before reading = \(self.testingMode)")
+        self.testingMode = UserDefaults.standard.bool(forKey: "testingMode")
+        print("   self.testingMode after reading = \(self.testingMode)")
         
         // Deal with files
         let documentFolderPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        locationFilePath = "\(documentFolderPath.first!)/locationArray.plist"
-        print("\(documentFolderPath)")
+        locationFilePath = "\(documentFolderPath.first!)locationArray.plist"
+        print("   \(locationFilePath)")
         
         super.init()
         self.setUpToday()
         self.load()
         self.locationArray = []
+        setTestArray()
     }
     func setUpToday() {
         let date = Date.now
@@ -74,7 +79,6 @@ class RouteModel: NSObject {
         do {
             let data = try Data(contentsOf: filePath)
             let decoder = JSONDecoder()
-//            self.locationMap = try decoder.decode([DateComponents: [Location]].self, from: data )
             self.locationMap = try decoder.decode([DateComponents: [Location]].self, from: data )
             print("   \(String(describing: self.locationMap))")
         } catch {
@@ -110,11 +114,32 @@ class RouteModel: NSObject {
         coordinatesArray.append(CLLocationCoordinate2D(latitude: lat, longitude: lng))
     }
     
-    
     /*
      Testing Method
      */
     func setTestArray() {
         print("Route Model: \(#function)")
+        var aprilFirst: DateComponents = self.today
+        aprilFirst.month = 4
+        aprilFirst.day = 1
+        aprilFirst.isLeapMonth = false
+        aprilFirst.year = 2022
+        
+        // I am force unwrapping because this method is only called after everything is initialized.
+        let keyExists = locationMap![aprilFirst] != nil
+        if (!keyExists) {
+            let testLocation: Location = Location(-118.29131, 34.023, 130)
+            var testLocationArray: [Location] = [testLocation]
+            testLocationArray.append(Location(-118.28785, 34.02030, 5000))
+            testLocationArray.append(Location(-118.28666, 34.02193, 1250))
+            testLocationArray.append(Location(-118.28704, 34.02287, 1500))
+            testLocationArray.append(Location(-118.28511, 34.02324, 27000))
+            testLocationArray.append(Location(-118.28389, 34.02739, 500))
+            testLocationArray.append(Location(-118.28418, 34.05074, 500))
+            testLocationArray.append(Location(-118.27925, 34.05902, 10000))
+            testLocationArray.append(Location(-118.29419, 34.05775, 15000))
+            self.locationMap![aprilFirst] = testLocationArray
+        }
     }
 }
+

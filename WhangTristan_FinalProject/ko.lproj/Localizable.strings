@@ -34,3 +34,7 @@
 "sec_text" = "초";
 "test_text" = "기준";
 "real_text" = "Real";
+
+// Map Route View Controller
+"polyline_text" = "Polyline";
+"print_text" = "Print";

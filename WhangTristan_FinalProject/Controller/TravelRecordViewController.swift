@@ -41,7 +41,6 @@ class TravelRecordViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("   TRVC: \(#function)")
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell") as! RecordTableViewCell
         if let locationMap = sharedRouteModel.locationMap {
             if let locationArray = locationMap[dateWeAreLookingAt] {
@@ -82,8 +81,12 @@ class TravelRecordViewController: UIViewController, UITableViewDelegate, UITable
         } else {
             sharedRouteModel.testingMode = false
         }
+        UserDefaults.standard.set(RouteModel.shared.testingMode, forKey: "testingMode")
+        
         tableView.reloadData()
     }
+    
+    
     func setStartedSelectedSegment() {
         if (sharedRouteModel.testingMode == false) {
             testRealSegmentedControl.selectedSegmentIndex = 1

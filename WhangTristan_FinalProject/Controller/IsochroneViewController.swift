@@ -95,7 +95,6 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
      */
     func createPolyLine() {
         print("IsochroneViewController: \(#function)")
-//        print("   CoordinatesToMap: \(self.coordinatesToMap)")
         for shell in coordinatesToMap {
             let polyLine = MKPolyline(coordinates: shell, count: shell.count)
             isochroneMapView.addOverlay(polyLine)

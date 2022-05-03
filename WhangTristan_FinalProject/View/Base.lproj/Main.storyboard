@@ -22,8 +22,8 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="1XS-2s-v5S"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ilC-N5-6db">
-                                <rect key="frame" x="294" y="44" width="100" height="44"/>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ilC-N5-6db">
+                                <rect key="frame" x="294" y="90" width="100" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="IUD-aH-UL1"/>
                                     <constraint firstAttribute="height" constant="44" id="XAA-Uc-tCK"/>
@@ -34,8 +34,8 @@
                                     <action selector="testButtonDidTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WoL-G4-con"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoa-0c-Ivo">
-                                <rect key="frame" x="294" y="103" width="100" height="44"/>
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoa-0c-Ivo">
+                                <rect key="frame" x="294" y="149" width="100" height="44"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Print"/>
                                 <connections>
@@ -43,13 +43,19 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pXZ-d2-cTf">
-                                <rect key="frame" x="294" y="162" width="100" height="44"/>
+                                <rect key="frame" x="294" y="208" width="100" height="44"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="location.fill" catalog="system"/>
                                 <connections>
                                     <action selector="recenterButtonDidTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Td-p1-93k"/>
                                 </connections>
                             </button>
+                            <datePicker contentMode="topRight" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="hdU-IR-EHG">
+                                <rect key="frame" x="20" y="44" width="374" height="31"/>
+                                <connections>
+                                    <action selector="datePickerValueDidChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="4Jc-Dl-Aza"/>
+                                </connections>
+                            </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -57,7 +63,9 @@
                             <constraint firstItem="pXZ-d2-cTf" firstAttribute="width" secondItem="eoa-0c-Ivo" secondAttribute="width" id="06q-hU-BBz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eoa-0c-Ivo" secondAttribute="trailing" constant="20" id="1JQ-ik-Seb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ilC-N5-6db" secondAttribute="trailing" constant="20" id="2t6-4s-tzl"/>
-                            <constraint firstItem="ilC-N5-6db" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="7dg-Fg-vjE"/>
+                            <constraint firstItem="hdU-IR-EHG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="4L5-JC-Po7"/>
+                            <constraint firstItem="ilC-N5-6db" firstAttribute="top" secondItem="hdU-IR-EHG" secondAttribute="bottom" constant="15" id="ErN-jd-t2h"/>
+                            <constraint firstItem="hdU-IR-EHG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="EvK-4U-yzB"/>
                             <constraint firstItem="QRr-oM-Yib" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="HXR-dF-7tk"/>
                             <constraint firstItem="QRr-oM-Yib" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Lbd-Fy-Qr0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ilC-N5-6db" secondAttribute="trailing" constant="20" id="Wjk-mz-BQ1"/>
@@ -65,7 +73,7 @@
                             <constraint firstItem="eoa-0c-Ivo" firstAttribute="top" secondItem="ilC-N5-6db" secondAttribute="bottom" constant="15" id="Xrc-ci-ggB"/>
                             <constraint firstItem="eoa-0c-Ivo" firstAttribute="height" secondItem="ilC-N5-6db" secondAttribute="height" id="a0g-9E-WwR"/>
                             <constraint firstAttribute="trailing" secondItem="QRr-oM-Yib" secondAttribute="trailing" id="b44-a4-bVR"/>
-                            <constraint firstItem="ilC-N5-6db" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hfo-EK-gJe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hdU-IR-EHG" secondAttribute="trailing" constant="20" id="knf-lT-rFM"/>
                             <constraint firstAttribute="bottom" secondItem="QRr-oM-Yib" secondAttribute="bottom" id="u9L-Td-abU"/>
                             <constraint firstItem="eoa-0c-Ivo" firstAttribute="width" secondItem="ilC-N5-6db" secondAttribute="width" id="vFF-bk-U0A"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pXZ-d2-cTf" secondAttribute="trailing" constant="20" id="xTd-8G-8WN"/>
@@ -80,7 +88,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="496" y="1428"/>
+            <point key="canvasLocation" x="495.6521739130435" y="1427.6785714285713"/>
         </scene>
         <!--Record-->
         <scene sceneID="aNC-mh-gNk">

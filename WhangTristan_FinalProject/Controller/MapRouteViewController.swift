@@ -14,17 +14,13 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     /*
     Properties of Map View Controller Class
      */
-    var myInitLocation = CLLocationCoordinate2D(latitude: 32.7767, longitude: -96.7970)
+    var myInitLocation = CLLocationCoordinate2D(latitude: 34.023, longitude: -118.29131)
     let locationManager = CLLocationManager()
     let route = RouteModel.shared
-    let coordinateArray = RouteModel.shared.coordinatesArray
+    var coordinateArray: [CLLocationCoordinate2D] = RouteModel.shared.coordinatesArray
     let locationArray = RouteModel.shared.locationArray
     var lastTimeMeasurement: Date = Date()
     
-    /*
-     Outlets of MapViewController Class
-     */
-    @IBOutlet weak var testButton: UIButton!
     
     
     /*
@@ -46,8 +42,14 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         
     }
     @IBAction func recenterButtonDidTapped(_ sender: Any) {
+        print("MapRouteViewController: \(#function)")
+        let span = MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007)
+        if (!self.coordinateArray.isEmpty) {
+            let region = MKCoordinateRegion(center: self.coordinateArray[0], span: span)
+            mapView.setRegion(region, animated: true)
+            return
+        }
         if let currentLocation = locationManager.location?.coordinate {
-            let span = MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007)
             let region = MKCoordinateRegion(center: currentLocation, span: span)
             mapView.setRegion(region, animated: true)
         }
@@ -58,15 +60,21 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         print("MapRouteViewController: \(#function)")
         super.viewDidLoad()
         route.setUpToday()
-        
-        // core location setup
+    
+        /*
+         Core Location Setup
+         if you are in testing mode, the distance fileter is the 50 meters but if its in real it should be 200
+         */
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        locationManager.distanceFilter = 10
+        if (route.testingMode == true) {
+            locationManager.distanceFilter = 50
+        } else {
+            locationManager.distanceFilter = 200
+        }
+        
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
-        
-        
         if let currentlocation = locationManager.location?.coordinate {
             myInitLocation = currentlocation
         }
@@ -76,20 +84,33 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
         let region = MKCoordinateRegion(center: myInitLocation, span: span)
         mapView.setRegion(region, animated: true)
-        
-//        createPolyLine()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("MapRouteViewController: \(#function)")
+        if (route.testingMode == true) {
+            locationManager.distanceFilter = 50
+        } else {
+            locationManager.distanceFilter = 200
+        }
     }
     
     
     func createPolyLine() {
         print("MapRouteViewController: \(#function)")
-        print("   Route.coordinatesArray: \(route.coordinatesArray)")
+        print("   Route.coordinatesArray: \(self.coordinateArray)")
         
-        let polyLine = MKPolyline(coordinates: route.coordinatesArray, count: route.coordinatesArray.count)
+        let polyLine = MKPolyline(coordinates: self.coordinateArray, count: self.coordinateArray.count)
         mapView.addOverlay(polyLine)
+    }
+    func removeAllPolyLines() {
+        print("MapRouteViewController: \(#function)")
+        let currentOverlays = self.mapView.overlays
+        mapView.removeOverlays(currentOverlays)
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        print("MapRouteViewController: \(#function)")
         if (overlay is MKPolyline) {
             let polyLineRender = MKPolylineRenderer(overlay: overlay)
             polyLineRender.strokeColor = UIColor.purple.withAlphaComponent(0.5)
@@ -113,7 +134,6 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         if let location = locations.first {
             // there is a lot you can access from CLLocation, like time, altitude, literally
             // everything. You will need it for your project
-//            print("user location : lat \(location.coordinate.latitude), lng \(location.coordinate.longitude)")
             route.addCorrdinate(coords: location.coordinate)
             self.shouldIAddLocation(loc: location)
         }
@@ -125,12 +145,20 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
      But in real mode, it will record the locations where you spend more than 5 minutes.
      */
     func shouldIAddLocation(loc: CLLocation) {
+        print("MapRouteViewController: \(#function)")
         let currentTime = Date()
         let timeDifference = currentTime.timeIntervalSince(self.lastTimeMeasurement)
-        print("\(#function)")
         print("   timeDifference: \(timeDifference)")
-        //minimum time spent is the amount of time that you will spend in an
-        //area before it will make it a marker on the map.
+        
+        /*
+         I set lastTimeMeasurement equal to currentTime because only time that you set within the area specified by the distance fileter matters. This will cause the map to be a bit less accurate in its display of locations/the route that you took.
+         
+         There are simple ways to get around this but this feature is just not currently implemented.
+         */
+        self.lastTimeMeasurement = currentTime
+        
+        
+        // minimum time spent is the amount of time that you need to spend in an area before the progam will record this and place it on the map
         var minimumTimeSpent: Double = 0
         if (route.testingMode == true) {
             minimumTimeSpent = 10
@@ -149,7 +177,7 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("MapRouteViewController: \(#function)")
-        print("\(#function) \(error.localizedDescription)")
+        print("   \(error.localizedDescription)")
     }
 
     /*
@@ -159,19 +187,38 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         print("MapRouteViewController: \(#function)")
         print("\(#function)")
-        if (manager.authorizationStatus == .authorizedAlways) {
-
+        if (manager.authorizationStatus != .authorizedAlways) {
+            let alert = UIAlertController(title: "Location Preferences Changed", message: "Please change your preferences back to Always Active. Otherwise this app will be unable to function properly", preferredStyle: .alert)
+            let okayAction = UIAlertAction(title: "Okay", style: .default)
+            alert.addAction(okayAction)
+            present(alert, animated: true, completion: nil)
+            locationManager.requestAlwaysAuthorization()
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+   
+    @IBAction func datePickerValueDidChange(_ sender: UIDatePicker) {
+        removeAllPolyLines()
+        print("MapRouteViewController: \(#function)")
+        if let locationMapUnwrapped = route.locationMap {
+            let date =  sender.calendar.dateComponents([.day, .year, .month], from: sender.date)
+            if let tempLocationArray = locationMapUnwrapped[date] {
+                self.coordinateArray = []
+                for loc in tempLocationArray {
+                    self.coordinateArray.append(CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude))
+                }
+            }
+        }
+        createPolyLine()
+        return
     }
-    */
+    
+    
+    /*
+     Outlets of MapViewController Class
+     */
+    @IBOutlet weak var testButton: UIButton!
+    
+    
+    
 
 }

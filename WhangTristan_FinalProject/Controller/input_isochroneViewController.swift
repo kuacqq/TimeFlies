@@ -63,11 +63,7 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
         }
         
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let isochroneViewController = segue.destination as? IsochroneViewController {
-//            isochroneViewController.query = addressTextField.text
-//        }
-//    }
+
     
     
     func geocodeAddress(addressInput: String) {

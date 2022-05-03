@@ -60,6 +60,7 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         print("MapRouteViewController: \(#function)")
         super.viewDidLoad()
         route.setUpToday()
+        self.localizeButtonText()
     
         /*
          Core Location Setup
@@ -71,7 +72,6 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         } else {
             locationManager.distanceFilter = 200
         }
-        
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
@@ -84,6 +84,7 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
         let region = MKCoordinateRegion(center: myInitLocation, span: span)
         mapView.setRegion(region, animated: true)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -217,7 +218,14 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
      Outlets of MapViewController Class
      */
     @IBOutlet weak var testButton: UIButton!
-    
+    @IBOutlet weak var printButton: UIButton!
+    /*
+     Localization Functions
+     */
+    func localizeButtonText() {
+        testButton.setTitle(NSLocalizedString("polyline_text", comment: ""), for: .normal)
+        printButton.setTitle(NSLocalizedString("print_text", comment: ""), for: .normal)
+    }
     
     
 

@@ -16,25 +16,29 @@
 "walking_text" = "도보";
 "bus_text" = "버스";
 "train_text" = "기차";
-"done_text" = "Done";
+"done_text" = "끝난";
 
 // Isochrone View Controller
-"modify_text" = "Modify";
-"clear_text" = "Clear";
-"load_text" = "Load";
+"modify_text" = "폴리라인";
+"clear_text" = "지우";
+"load_text" = "재장전";
 
 // Tab Bar
-"isochrone_text" = "Isochrone";
-"route_text" = "Route";
-"record_text" = "Record";
+"isochrone_text" = "등시성";
+"route_text" = "노선";
+"record_text" = "기록";
 
 // Record View Controller
 "hr_text" = "시";
 "min_text" = "분";
 "sec_text" = "초";
 "test_text" = "기준";
-"real_text" = "Real";
+"real_text" = "현실";
+"n_text" = "북";
+"s_text" = "남";
+"e_text" = "동";
+"w_text" = "서";
 
 // Map Route View Controller
-"polyline_text" = "Polyline";
-"print_text" = "Print";
+"polyline_text" = "폴리라인";
+"print_text" = "써";

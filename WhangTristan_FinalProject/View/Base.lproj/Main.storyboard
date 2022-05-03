@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Route-->
+        <!--Map Route View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MapRouteViewController" customModule="WhangTristan_FinalProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -80,9 +80,10 @@
                             <constraint firstItem="pXZ-d2-cTf" firstAttribute="top" secondItem="eoa-0c-Ivo" secondAttribute="bottom" constant="15" id="yUk-pz-LQR"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Route" image="mappin" catalog="system" id="kZA-zM-w4c"/>
+                    <tabBarItem key="tabBarItem" title="" image="mappin" catalog="system" id="kZA-zM-w4c"/>
                     <connections>
                         <outlet property="mapView" destination="QRr-oM-Yib" id="c1O-e6-YQm"/>
+                        <outlet property="printButton" destination="eoa-0c-Ivo" id="ZCN-yq-oWh"/>
                         <outlet property="testButton" destination="ilC-N5-6db" id="Dly-W4-MyD"/>
                     </connections>
                 </viewController>
@@ -90,7 +91,7 @@
             </objects>
             <point key="canvasLocation" x="495.6521739130435" y="1427.6785714285713"/>
         </scene>
-        <!--Record-->
+        <!--Travel Record View Controller-->
         <scene sceneID="aNC-mh-gNk">
             <objects>
                 <viewController id="EHc-Vu-vdP" customClass="TravelRecordViewController" customModule="WhangTristan_FinalProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -99,24 +100,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="F6r-Pq-Q1f">
-                                <rect key="frame" x="0.0" y="94" width="414" height="802"/>
+                                <rect key="frame" x="0.0" y="80" width="414" height="816"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" id="Ka5-ag-A8x" customClass="RecordTableViewCell" customModule="WhangTristan_FinalProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="65.5"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ka5-ag-A8x" id="ZtD-1F-k33">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="65.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coordinates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNM-Jy-72Q">
-                                                    <rect key="frame" x="16" y="11" width="93" height="43.5"/>
+                                                    <rect key="frame" x="16" y="11" width="93" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7D3-iS-Nfg">
-                                                    <rect key="frame" x="352" y="22" width="38" height="21.5"/>
+                                                    <rect key="frame" x="352" y="22" width="38" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -142,15 +143,14 @@
                                     <outlet property="delegate" destination="EHc-Vu-vdP" id="n0l-Gf-7Ro"/>
                                 </connections>
                             </tableView>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" id="von-Ya-j8G">
-                                <rect key="frame" x="0.0" y="44" width="414" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="Wky-uA-BSg">
+                                <rect key="frame" x="20" y="49" width="374" height="31"/>
                                 <connections>
-                                    <action selector="dateDidChanged:" destination="EHc-Vu-vdP" eventType="valueChanged" id="tUT-7L-vCu"/>
+                                    <action selector="dateDidChanged:" destination="EHc-Vu-vdP" eventType="valueChanged" id="Lbe-8F-BJ4"/>
                                 </connections>
                             </datePicker>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Htz-e6-dPx">
-                                <rect key="frame" x="10" y="44" width="207" height="32"/>
+                                <rect key="frame" x="20" y="49" width="91" height="32"/>
                                 <segments>
                                     <segment title="Test"/>
                                     <segment title="Real"/>
@@ -165,17 +165,18 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="F6r-Pq-Q1f" secondAttribute="bottom" id="3Gr-VC-cF9"/>
                             <constraint firstItem="F6r-Pq-Q1f" firstAttribute="trailing" secondItem="zKU-VN-xP1" secondAttribute="trailing" id="6GM-Me-uT6"/>
-                            <constraint firstItem="Htz-e6-dPx" firstAttribute="leading" secondItem="zKU-VN-xP1" secondAttribute="leading" constant="10" id="7hl-3d-14q"/>
-                            <constraint firstItem="F6r-Pq-Q1f" firstAttribute="top" secondItem="zKU-VN-xP1" secondAttribute="top" constant="50" id="YIE-cz-j6l"/>
-                            <constraint firstItem="Htz-e6-dPx" firstAttribute="top" secondItem="zKU-VN-xP1" secondAttribute="top" id="c13-RX-Bs5"/>
-                            <constraint firstItem="von-Ya-j8G" firstAttribute="centerY" secondItem="Htz-e6-dPx" secondAttribute="centerY" id="hCz-je-Pur"/>
+                            <constraint firstItem="Htz-e6-dPx" firstAttribute="leading" secondItem="zKU-VN-xP1" secondAttribute="leading" constant="20" id="7hl-3d-14q"/>
+                            <constraint firstItem="Wky-uA-BSg" firstAttribute="leading" secondItem="zKU-VN-xP1" secondAttribute="leading" constant="20" id="Ahm-eg-3BH"/>
+                            <constraint firstItem="zKU-VN-xP1" firstAttribute="trailing" secondItem="Wky-uA-BSg" secondAttribute="trailing" constant="20" id="K9E-Fm-7Vv"/>
+                            <constraint firstItem="Wky-uA-BSg" firstAttribute="top" secondItem="zKU-VN-xP1" secondAttribute="top" constant="5" id="LK9-wq-jiS"/>
+                            <constraint firstItem="F6r-Pq-Q1f" firstAttribute="top" secondItem="Htz-e6-dPx" secondAttribute="bottom" id="X6e-nw-Th7"/>
+                            <constraint firstItem="Htz-e6-dPx" firstAttribute="top" secondItem="zKU-VN-xP1" secondAttribute="top" constant="5" id="c13-RX-Bs5"/>
                             <constraint firstItem="F6r-Pq-Q1f" firstAttribute="leading" secondItem="zKU-VN-xP1" secondAttribute="leading" id="qkQ-fx-X0Y"/>
-                            <constraint firstItem="Htz-e6-dPx" firstAttribute="width" secondItem="von-Ya-j8G" secondAttribute="width" multiplier="0.5" id="vtz-Ce-kWT"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Record" image="filemenu.and.selection" catalog="system" id="n2e-xC-PZm"/>
+                    <tabBarItem key="tabBarItem" title="" image="filemenu.and.selection" catalog="system" id="n2e-xC-PZm"/>
                     <connections>
-                        <outlet property="datePicker" destination="von-Ya-j8G" id="ZC9-Wf-Dhk"/>
+                        <outlet property="datePicker" destination="Wky-uA-BSg" id="dAp-jP-axH"/>
                         <outlet property="tableView" destination="F6r-Pq-Q1f" id="Rpg-0T-fMd"/>
                         <outlet property="testRealSegmentedControl" destination="Htz-e6-dPx" id="csF-UK-Xnh"/>
                     </connections>
@@ -253,7 +254,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="clearButton" destination="DEq-Lh-7vN" id="eDy-mH-fkd"/>
                         <outlet property="isochroneMapView" destination="Yvk-87-7On" id="Wur-pS-pTK"/>
+                        <outlet property="loadButton" destination="PWh-9l-iZn" id="9qt-fc-9I5"/>
+                        <outlet property="modifyBarButton" destination="boo-Vl-NhG" id="K3K-5a-L8E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MdF-0g-ncL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -352,6 +356,7 @@
                     <connections>
                         <outlet property="addressLabel" destination="A5f-K0-TUO" id="HYR-K4-Cna"/>
                         <outlet property="addressTextField" destination="MXE-6j-ME8" id="D9v-Qz-Hd0"/>
+                        <outlet property="doneBarButton" destination="2uj-tF-TOX" id="8jE-BO-RdL"/>
                         <outlet property="holderView" destination="pmL-rd-oTP" id="YAu-AQ-SP4"/>
                         <outlet property="modeOfTransportLabel" destination="gjd-gP-q18" id="Ete-fw-GZM"/>
                         <outlet property="pickerView" destination="zr9-Ls-NR6" id="clk-8z-sa1"/>
@@ -363,10 +368,10 @@
             </objects>
             <point key="canvasLocation" x="2221.739130434783" y="780.80357142857144"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Localizable Tab Bar Controller-->
         <scene sceneID="3Fp-Pv-NIp">
             <objects>
-                <tabBarController id="V4h-YI-g0f" sceneMemberID="viewController">
+                <tabBarController id="V4h-YI-g0f" customClass="localizableTabBarController" customModule="WhangTristan_FinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="a8z-eo-Lc1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -382,11 +387,11 @@
             </objects>
             <point key="canvasLocation" x="-708" y="1093"/>
         </scene>
-        <!--Isochrone-->
+        <!--Navigation Controller-->
         <scene sceneID="bQh-oa-1Jg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GZw-6y-tmF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Isochrone" image="books.vertical.circle.fill" catalog="system" id="ga4-4V-lEL"/>
+                    <tabBarItem key="tabBarItem" title="" image="books.vertical.circle.fill" catalog="system" id="ga4-4V-lEL"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ide-3q-CIU">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

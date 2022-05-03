@@ -126,20 +126,21 @@ class RouteModel: NSObject {
         aprilFirst.year = 2022
         
         // I am force unwrapping because this method is only called after everything is initialized.
-        let keyExists = locationMap![aprilFirst] != nil
-        if (!keyExists) {
-            let testLocation: Location = Location(-118.29131, 34.023, 130)
-            var testLocationArray: [Location] = [testLocation]
-            testLocationArray.append(Location(-118.28785, 34.02030, 5000))
-            testLocationArray.append(Location(-118.28666, 34.02193, 1250))
-            testLocationArray.append(Location(-118.28704, 34.02287, 1500))
-            testLocationArray.append(Location(-118.28511, 34.02324, 27000))
-            testLocationArray.append(Location(-118.28389, 34.02739, 500))
-            testLocationArray.append(Location(-118.28418, 34.05074, 500))
-            testLocationArray.append(Location(-118.27925, 34.05902, 10000))
-            testLocationArray.append(Location(-118.29419, 34.05775, 15000))
-            self.locationMap![aprilFirst] = testLocationArray
-        }
+        // let keyExists = locationMap![aprilFirst] != nil
+        let testLocation: Location = Location(-118.29131, 34.023, 130)
+        var testLocationArray: [Location] = [testLocation]
+        testLocationArray.append(Location(-118.28785, 34.02030, 5000))
+        testLocationArray.append(Location(-118.28666, 34.02193, 1250))
+        testLocationArray.append(Location(-118.28704, 34.02287, 1500))
+        testLocationArray.append(Location(-118.28511, 34.02324, 27000))
+        testLocationArray.append(Location(-118.28389, 34.02739, 5009))
+        testLocationArray.append(Location(-118.28418, 34.05074, 3000))
+        testLocationArray.append(Location(-118.27925, 34.05902, 10000))
+        testLocationArray.append(Location(-118.29419, 34.05775, 15000))
+        testLocationArray.append(Location(-118.26115, 34.04136, 2500))
+        testLocationArray.append(Location(-118.27264, 34.02797, 17000))
+        self.locationMap![aprilFirst] = testLocationArray
+        
     }
 }
 

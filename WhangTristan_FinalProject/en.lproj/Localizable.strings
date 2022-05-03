@@ -36,6 +36,12 @@
 "sec_text" = "sec";
 "test_text" = "Test";
 "real_text" = "Real";
+"n_text" = "N";
+"s_text" = "S";
+"e_text" = "E";
+"w_text" = "W";
+
+
 
 // Map Route View Controller
 "polyline_text" = "Polyline";

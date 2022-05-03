@@ -30,6 +30,7 @@
 		EAEA5BB02804D81000A7AC7C /* input_isochroneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5BAF2804D81000A7AC7C /* input_isochroneViewController.swift */; };
 		EAEB9358280A448A0055A442 /* GeocodingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB9357280A448A0055A442 /* GeocodingModel.swift */; };
 		EAEB935A280A488A0055A442 /* GeocodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB9359280A488A0055A442 /* GeocodeResponse.swift */; };
+		EAF8D1FF282103B30032F78B /* localizableTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF8D1FE282103B30032F78B /* localizableTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		EAEA5BAF2804D81000A7AC7C /* input_isochroneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = input_isochroneViewController.swift; sourceTree = "<group>"; };
 		EAEB9357280A448A0055A442 /* GeocodingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodingModel.swift; sourceTree = "<group>"; };
 		EAEB9359280A488A0055A442 /* GeocodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodeResponse.swift; sourceTree = "<group>"; };
+		EAF8D1FE282103B30032F78B /* localizableTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = localizableTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 		EAEA5B542800B37A00A7AC7C = {
 			isa = PBXGroup;
 			children = (
+				EAF8D1FE282103B30032F78B /* localizableTabBarController.swift */,
 				EAEA5B5F2800B37A00A7AC7C /* WhangTristan_FinalProject */,
 				EAEA5B762800B37C00A7AC7C /* WhangTristan_FinalProjectTests */,
 				EAEA5B802800B37C00A7AC7C /* WhangTristan_FinalProjectUITests */,
@@ -346,6 +349,7 @@
 				EAEB935A280A488A0055A442 /* GeocodeResponse.swift in Sources */,
 				EA8939F2281667ED004F981B /* TravelRecordViewController.swift in Sources */,
 				EAEA5BB02804D81000A7AC7C /* input_isochroneViewController.swift in Sources */,
+				EAF8D1FF282103B30032F78B /* localizableTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

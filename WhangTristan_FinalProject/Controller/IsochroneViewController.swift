@@ -9,14 +9,23 @@ import UIKit
 import MapKit
 
 class IsochroneViewController: UIViewController, MKMapViewDelegate {
-    
+    /*
+     Singleton Setup
+     */
     var sharedGeocodingModel = GeocodingModel.shared
-    var myInitLocation = CLLocationCoordinate2D(latitude: 51.50553730266506, longitude: -0.12818042746366376)
     var sharedIsochoneModel = IsochroneModel.shared
+    
+    /*
+     Other Class Properties
+     */
+    var myInitLocation = CLLocationCoordinate2D(latitude: 51.50553730266506, longitude: -0.12818042746366376)
     var coordinatesToMap: [[CLLocationCoordinate2D]] = []
     var query: String?
     
-    
+    /*
+     IBOutlets
+     */
+    // I just set the property of the map to not show traffic. This was just to get rid of some of the xcode warnings that clogged up the console. However, this does not remove all of them, most notably the compile errors from generating poly lines.
     @IBOutlet weak var isochroneMapView: MKMapView! {
         didSet {
             #if targetEnvironment(simulator)
@@ -24,32 +33,16 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
             #endif
         }
     }
+    // these IBOutlets have their titles localized at the bottom of the file.
+    @IBOutlet weak var loadButton: UIButton!
+    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var modifyBarButton: UIBarButtonItem!
     
-    
-    @IBAction func buttonDidTapped(_ sender: Any) {
-        print("IsochroneViewController: \(#function)")
-        loadIsochrone()
-    }
-    @IBAction func clearButtonDidTapped(_ sender: Any) {
-        self.removeAllPolyLines()
-    }
-    
-    @IBAction func realignButtonDidTapped(_ sender: Any) {
-        print("\(#function)")
-        realignView()
-    }
-    func realignView() {
-        if let lat = sharedIsochoneModel.inputLatDouble, let lng = sharedIsochoneModel.inputLngDouble {
-            print("   lat: \(lat), lng: \(lng)")
-            let currentLocation = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-            
-            let span = MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
-            let region = MKCoordinateRegion(center: currentLocation, span: span)
-            isochroneMapView.setRegion(region, animated: true)
-        }
-    }
-    
-    
+    /*
+     Functions:
+     */
+    // viewDidLoad just does some initial setup in terms of modifying the starting location and perspective the user has on the mapView.
+    // The initial locaiton just happens to be at the heart of london.
     override func viewDidLoad() {
         print("IsochroneViewController: \(#function)")
         super.viewDidLoad()
@@ -57,22 +50,49 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
         let span = MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
         let region = MKCoordinateRegion(center: myInitLocation, span: span)
         isochroneMapView.setRegion(region, animated: true)
-        
+        localizeButtons()
     }
+    
+    // viewWillAppear is primarily to reload the display after making changes in input_isochroneViewController.
     override func viewWillAppear(_ animated: Bool) {
-        /*
-         uncomment loadIsochone to enable the api again.
-         */
         if let query = sharedIsochoneModel.inputAddress {
             geocodeAddress(addressInput: query)
             sharedIsochoneModel.inputAddress = nil
         } else {
-//            self.realignView()
-//            self.loadIsochrone()
+            self.realignView()
+            self.loadIsochrone()
         }
-        
-        
     }
+    
+    // buttonDidTapped (this is the load button). The load button just reloads the isochrone model. This is mainly so that you can clear all your previously generated isochrones and just load the one that you just entered in input_isochroneViewController.
+    @IBAction func buttonDidTapped(_ sender: Any) {
+        print("IsochroneViewController: \(#function)")
+        loadIsochrone()
+    }
+    
+    // clearButtonDidTapped just removes all the polylines/polygons overlayed on the mapView.
+    @IBAction func clearButtonDidTapped(_ sender: Any) {
+        self.removeAllPolyLines()
+    }
+    
+    // realignButtonDidTapped just calls the realign view function on the butotn press
+    @IBAction func realignButtonDidTapped(_ sender: Any) {
+        print("\(#function)")
+        realignView()
+    }
+    
+    // realigns the view relative to the starting location of your generated isochrone.
+    func realignView() {
+        if let lat = sharedIsochoneModel.inputLatDouble, let lng = sharedIsochoneModel.inputLngDouble {
+            print("   lat: \(lat), lng: \(lng)")
+            let currentLocation = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+            let span = MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
+            let region = MKCoordinateRegion(center: currentLocation, span: span)
+            isochroneMapView.setRegion(region, animated: true)
+        }
+    }
+    
+    // geocodeAddress takes in an address and geocodes it. This then immediately realigns the view and loads the respective isochrone.
     func geocodeAddress(addressInput: String) {
         sharedGeocodingModel.setAddress(input: addressInput)
         self.sharedGeocodingModel.geocode { i in
@@ -82,17 +102,10 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
                 self.realignView()
                 self.loadIsochrone()
             }
-            
         }
     }
     
-    /*
-     SECTION: Making the polyLine, this uses the IsochroneModel
-     to do this.
-        -It sets the properties of the line in func mapView(..renderFor)...
-        -The actual line is created and added as an overlay in createPolyLine()
-        -LoadIsochrone uses the IsochroneModel and the travelTimeAPI to fill out the actual coordinates to map property which is then used to make the overlay.
-     */
+    // creates the poly lines using the coordinates to map. The coordinates to map is of type [[CLLocationCoordinate2D]] and so for each of the shells you have to make a different poly line to wrap around those locations
     func createPolyLine() {
         print("IsochroneViewController: \(#function)")
         for shell in coordinatesToMap {
@@ -100,6 +113,7 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
             isochroneMapView.addOverlay(polyLine)
         }
     }
+    // creates the polygons using the coordinates to map. The coordinates to map is of type [[CLLocationCoordinate2D]] and so for each of the shells you have to make a different polygon to cover those areas.
     func addPolygon() {
         print("IsochroneViewController: \(#function)")
         for shell in coordinatesToMap {
@@ -108,13 +122,13 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    // removes all the poly lines and polygons.
     func removeAllPolyLines() {
         let currentOverlays = self.isochroneMapView.overlays
         isochroneMapView.removeOverlays(currentOverlays)
     }
     
-    
-    
+    // This is the function that actually renders the poly lines and polygons on the map.
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if (overlay is MKPolyline) {
             let polyLineRender = MKPolylineRenderer(overlay: overlay)
@@ -129,13 +143,7 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
         return MKOverlayRenderer()
     }
     
-    
-    /*
-     was getting this error so this is my trying to fix it
-     2022-04-10 16:16:20.602852-0700 WhangTristan_FinalProject[74964:9098061] Compiler error: Invalid library file
-     */
-    
-    
+    // loadIsochrone triggers the api call in isochroneModel and parses the information storing it in shells and then the coordinate map of this view controller. Then it calls add polygon to render the polygon.
     func loadIsochrone() {
         print("\(#function)")
         sharedIsochoneModel.getIsochrone { i in
@@ -167,25 +175,16 @@ class IsochroneViewController: UIViewController, MKMapViewDelegate {
     }
     
     
+    
     /*
-     segues to change the navigation parameters
+     Localizing functions
      */
-//    extension IsochroneViewController {
-//        @IBAction func doneToIsochroneViewController(_ segue: UIStoryboardSegue) {
-//
-//        }
-//    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let inputViewController = segue.destination as? input_isochroneViewController
-//        {
-//            DispatchQueue.main.async {
-//
-//                inputViewController.inputParametersChanged = {
-//                    // you can add stuff to get rid of the previous isochrone map.
-////                    self.removeAllPolyLines()
-////                    self.loadIsochrone()
-//                }
-//            }
-//        }
+    // localizes the titles of the buttons, including the bar button item.
+    func localizeButtons() {
+        loadButton.setTitle(NSLocalizedString("load_text", comment: ""), for: .normal)
+        clearButton.setTitle(NSLocalizedString("clear_text", comment: ""), for: .normal)
+        modifyBarButton.title = NSLocalizedString("modify_text", comment: "")
     }
+    
+    
 }

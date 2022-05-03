@@ -12,29 +12,19 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
     let sharedGeocodingModel = GeocodingModel.shared
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var timePicker: UIDatePicker!
-    @IBOutlet weak var modeOfTransportPicker: UIPickerView!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var holderView: UIView!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var modeOfTransportLabel: UILabel!
-    @IBOutlet weak var travelTimeLabel: UILabel!
-    
-    var inputParametersChanged: (()->Void)?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         print("input_isochroneViewController: \(#function)")
-        addressLabel.text = NSLocalizedString("address_label_text", comment: "")
-        modeOfTransportLabel.text = NSLocalizedString("mode_of_transport_text", comment: "")
-        travelTimeLabel.text = NSLocalizedString("travel_time_text", comment: "")
+        localizeLabels()
+        localizeButtons()
     }
     override func viewWillAppear(_ animated: Bool) {
-        addressLabel.text = NSLocalizedString("address_label_text", comment: "")
-        modeOfTransportLabel.text = NSLocalizedString("mode_of_transport_text", comment: "")
-        travelTimeLabel.text = NSLocalizedString("travel_time_text", comment: "")
+        
     }
     
     
@@ -64,8 +54,6 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
         
     }
 
-    
-    
     func geocodeAddress(addressInput: String) {
         sharedGeocodingModel.setAddress(input: addressInput)
         self.sharedGeocodingModel.geocode { i in
@@ -77,10 +65,6 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
         }
     }
     
-    
-    
-    
-    
     /*
      timePicker functions and attributes
      */
@@ -91,7 +75,6 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
     /*
      modeOfTransportPicker functinos and attributes
      */
-//    let TRANSPORT_MODE_ARRAY = ["Cycling", "Driving", "Public Transport", "Walking", "Bus", "Train"]
     let TRANSPORT_MODE_ARRAY = [NSLocalizedString("cycling_text", comment: ""),
                                 NSLocalizedString("driving_text", comment: ""),
                                 NSLocalizedString("public_transport_text", comment: ""),
@@ -101,31 +84,34 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
     let JSON_TRANSPORT_MODE_ARRAY = ["cycling", "driving", "public_transport", "walking", "bus", "train"]
     let NUMBER_OF_COMPONENTS = 1
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        print("input_isochroneViewController: \(#function)")
         return NUMBER_OF_COMPONENTS
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        print("input_isochroneViewController: \(#function)")
         return TRANSPORT_MODE_ARRAY.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        print("\(#function): TRANSPORT[\(row)]: \(TRANSPORT_MODE_ARRAY[row])")
         return TRANSPORT_MODE_ARRAY[row]
     }
     
     
-    
-    
-    
-
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+     Localizing Functions
+     */
+    @IBOutlet weak var doneBarButton: UIBarButtonItem!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var modeOfTransportLabel: UILabel!
+    @IBOutlet weak var travelTimeLabel: UILabel!
+    func localizeLabels() {
+        addressLabel.text = NSLocalizedString("address_label_text", comment: "")
+        modeOfTransportLabel.text = NSLocalizedString("mode_of_transport_text", comment: "")
+        travelTimeLabel.text = NSLocalizedString("travel_time_text", comment: "")
     }
-    */
+    func localizeButtons() {
+        doneBarButton.title = NSLocalizedString("done_text", comment: "")
+    }
+    
+    
+
+
 
 }

@@ -7,6 +7,13 @@
 
 import Foundation
 
+/*
+ The IsochroneModel basically has all of the pieces that it will use to make the api call as properties. These can be changed in the functions prior to getIsochrone(). These properties are changed in the input_IsochroneViewController primarily.
+ 
+ The getIsochrone function has an onSuccess escaping closure which is utilized in the isochroneViewController class.
+ 
+ The api call and processing is fairly standard, however the api call's response from the TimeTravel API is not consistent with the actual examples on their website so this has the potential of breaking if they change the response format back to the initial example.
+ */
 class IsochroneModel {
     static let shared = IsochroneModel()
     var inputAddress: String? 
@@ -16,6 +23,7 @@ class IsochroneModel {
     var inputLatDouble: Double? = 51.507609
     var inputModeOfTransport: String? = "driving"
     var inputTravelTimeInt: Int? = 3600
+    var GeometryArray: [Geometry] = []
 
     
     func changeInputs(lat: Double, lng: Double, modeOfTransport: String, travelTime: Int) {
@@ -35,10 +43,15 @@ class IsochroneModel {
     func setModeOfTransport(mode: String) {
         self.inputModeOfTransport = mode
     }
-    var GeometryArray: [Geometry] = []
+    
     func getIsochrone(onSuccess: @escaping ([Feature]) -> Void) {
         print("IsochroneModel: \(#function)")
-        
+        print("Date: \(Date())")
+        var date = Date()
+        var dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ss'Z'"
+        let dateString = dateFormatter.string(from: date)
+        print("Date Formatted: \(dateString)")
         /*
          This whole section is to make the url request work. it has a body and
          a lot of headers which took a while to get to work.
@@ -47,30 +60,6 @@ class IsochroneModel {
         {
             return
         }
-//        let body = [
-//            "arrival_searches": [
-//                "id": "isochrone-0",
-//                "coords": ["lat": 51.5119637, "lng": -0.1279543],
-//                "travel_time": 1800,
-//                "transportation": ["type": "public_transport"],
-//                "arrival_time": "2022-04-09T16:00:00.000Z"
-//            ]
-//        ]
-//        let body: [String: Any] = [
-//            "arrival_searches": [
-//                "id": "isochrone-0",
-//                "coords": ["lat": 51.5119637, "lng": -0.1279543],
-//                "travel_time": 1800,
-//                "transportation": ["type": "public_transport"],
-//                "arrival_time": "2022-04-09T16:00:00.000Z"
-//            ]
-//        ]
-//        print("   \(#function): body: \(body)")
-//        let finalBody = try? JSONSerialization.data(withJSONObject: body)
-//        print("   \(#function): finalBody: \(finalBody!)")
-        
-        
-        
         let modular_finalBody = """
             {
               "departure_searches": [
@@ -83,13 +72,14 @@ class IsochroneModel {
                   "transportation": {
                     "type": "\(self.inputModeOfTransport ?? "driving")"
                   },
-                  "departure_time": "2021-09-27T08:00:00Z",
+                  "departure_time": "\(dateString)",
                   "travel_time": \(self.inputTravelTimeInt ?? 3600)
                 }
               ]
             }
         """.data(using: .utf8)
-
+        
+        
 //        let static_finalBody = """
 //            {
 //              "departure_searches": [

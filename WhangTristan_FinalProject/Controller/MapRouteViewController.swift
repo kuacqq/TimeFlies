@@ -29,8 +29,13 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     @IBAction func testButtonDidTapped(_ sender: Any) {
         print("MapRouteViewController: \(#function)")
         self.createPolyLine()
-        
     }
+    
+    /*
+     IBAction functions
+     */
+    
+    // The print button is primarily for debugging purposes and is meant to work with the testMode property in the shared routeModel.
     @IBAction func printButtonDidTapped(_ sender: Any) {
         print("\(#function): PRINTER")
         print("   route.locationArray: \(String(describing: route.locationArray))")
@@ -39,8 +44,9 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         if let curLocation = locationManager.location {
             self.shouldIAddLocation(loc: curLocation)
         }
-        
     }
+    
+    // The recenter button will either recenter on your current location or on the first recorded location of the date that you picked in the datePicker.
     @IBAction func recenterButtonDidTapped(_ sender: Any) {
         print("MapRouteViewController: \(#function)")
         let span = MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007)
@@ -55,7 +61,7 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         }
     }
     
-    
+    // viewDidLoad. the viewDidLoad is to do some initial setup such as requesting authorization and seting up the locationManager. It also calls teh localizeButtons to localize the button text.
     override func viewDidLoad() {
         print("MapRouteViewController: \(#function)")
         super.viewDidLoad()
@@ -87,6 +93,7 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         
     }
     
+    // View will appear basically just makes sure that the distance filter is correct in the case where the user changed it in the recordViewController
     override func viewWillAppear(_ animated: Bool) {
         print("MapRouteViewController: \(#function)")
         if (route.testingMode == true) {
@@ -96,7 +103,7 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         }
     }
     
-    
+    // Creates the poly line for the movements on the date that you selected.
     func createPolyLine() {
         print("MapRouteViewController: \(#function)")
         print("   Route.coordinatesArray: \(self.coordinateArray)")
@@ -104,12 +111,13 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         let polyLine = MKPolyline(coordinates: self.coordinateArray, count: self.coordinateArray.count)
         mapView.addOverlay(polyLine)
     }
+    // remove poly lines just removes all overlays on the map view.
     func removeAllPolyLines() {
         print("MapRouteViewController: \(#function)")
         let currentOverlays = self.mapView.overlays
         mapView.removeOverlays(currentOverlays)
     }
-    
+    // This function is called when mapView.addOverlay(...) or mapView.removeOverlays(...) is called.
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         print("MapRouteViewController: \(#function)")
         if (overlay is MKPolyline) {
@@ -123,14 +131,9 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     
     
     
-    
-    
-    
-    /*
-     these are some really important methods that you will always use
-     */
+    // this function is just triggered when the locationManager detects that you have moved outside of the distance filter.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        print("MapRouteViewController: \(#function)")
+        print("MapRouteViewController: \(#function)")
         // optional binding
         if let location = locations.first {
             // there is a lot you can access from CLLocation, like time, altitude, literally

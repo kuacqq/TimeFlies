@@ -22,7 +22,6 @@
 		EAEA5B962800B6FF00A7AC7C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B952800B6FF00A7AC7C /* Location.swift */; };
 		EAEA5B982800B7DB00A7AC7C /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B972800B7DB00A7AC7C /* RouteModel.swift */; };
 		EAEA5B9C280136EA00A7AC7C /* MapRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B9B280136EA00A7AC7C /* MapRouteViewController.swift */; };
-		EAEA5B9E28013FF600A7AC7C /* MapTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B9D28013FF600A7AC7C /* MapTrackingViewController.swift */; };
 		EAEA5BA0280254DF00A7AC7C /* IsochroneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B9F280254DF00A7AC7C /* IsochroneViewController.swift */; };
 		EAEA5BA2280254F100A7AC7C /* IsochroneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5BA1280254F100A7AC7C /* IsochroneModel.swift */; };
 		EAEA5BAA280271E300A7AC7C /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5BA9280271E300A7AC7C /* Results.swift */; };
@@ -74,7 +73,6 @@
 		EAEA5B952800B6FF00A7AC7C /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		EAEA5B972800B7DB00A7AC7C /* RouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteModel.swift; sourceTree = "<group>"; };
 		EAEA5B9B280136EA00A7AC7C /* MapRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRouteViewController.swift; sourceTree = "<group>"; };
-		EAEA5B9D28013FF600A7AC7C /* MapTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTrackingViewController.swift; sourceTree = "<group>"; };
 		EAEA5B9F280254DF00A7AC7C /* IsochroneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsochroneViewController.swift; sourceTree = "<group>"; };
 		EAEA5BA1280254F100A7AC7C /* IsochroneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsochroneModel.swift; sourceTree = "<group>"; };
 		EAEA5BA9280271E300A7AC7C /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
@@ -113,7 +111,6 @@
 		EAEA5B542800B37A00A7AC7C = {
 			isa = PBXGroup;
 			children = (
-				EAF8D1FE282103B30032F78B /* localizableTabBarController.swift */,
 				EAEA5B5F2800B37A00A7AC7C /* WhangTristan_FinalProject */,
 				EAEA5B762800B37C00A7AC7C /* WhangTristan_FinalProjectTests */,
 				EAEA5B802800B37C00A7AC7C /* WhangTristan_FinalProjectUITests */,
@@ -175,13 +172,13 @@
 		EAEA5B932800B6D300A7AC7C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EAF8D1FE282103B30032F78B /* localizableTabBarController.swift */,
 				EA8939F1281667ED004F981B /* TravelRecordViewController.swift */,
 				EA8939F328166B74004F981B /* RecordTableViewCell.swift */,
 				EAEA5B642800B37A00A7AC7C /* ViewController.swift */,
 				EAEA5BAF2804D81000A7AC7C /* input_isochroneViewController.swift */,
 				EAEA5B9B280136EA00A7AC7C /* MapRouteViewController.swift */,
 				EAEA5B9F280254DF00A7AC7C /* IsochroneViewController.swift */,
-				EAEA5B9D28013FF600A7AC7C /* MapTrackingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -338,7 +335,6 @@
 				EAEA5B962800B6FF00A7AC7C /* Location.swift in Sources */,
 				EA8939F428166B74004F981B /* RecordTableViewCell.swift in Sources */,
 				EAEA5B652800B37A00A7AC7C /* ViewController.swift in Sources */,
-				EAEA5B9E28013FF600A7AC7C /* MapTrackingViewController.swift in Sources */,
 				EAEB9358280A448A0055A442 /* GeocodingModel.swift in Sources */,
 				EAEA5B612800B37A00A7AC7C /* AppDelegate.swift in Sources */,
 				EAEA5B9C280136EA00A7AC7C /* MapRouteViewController.swift in Sources */,

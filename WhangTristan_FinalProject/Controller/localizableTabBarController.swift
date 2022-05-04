@@ -8,7 +8,9 @@
 import UIKit
 
 class localizableTabBarController: UITabBarController {
-
+    
+    // This is a custom UITabBarController that was meant to localize the labels for each of the tabs
+    // but I was having a difficult time with this so I eventually scrapped this and left this here potentially for later
     override func viewDidLoad() {
         super.viewDidLoad()
         print("localizableTabBarController: \(#function)")

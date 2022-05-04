@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     let sharedGeocodingModel = GeocodingModel.shared
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var timePicker: UIDatePicker!
@@ -26,7 +26,16 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
     override func viewWillAppear(_ animated: Bool) {
         
     }
-    
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//        if text == "\n" {
+//            self.answerTextField.becomeFirstResponder()
+//        }
+//        return true
+//    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     
     @IBAction func doneButtonDidPressed(_ sender: Any) {
         print("input_isochroneViewController: \(#function):")

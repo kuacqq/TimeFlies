@@ -46,9 +46,13 @@ class IsochroneModel {
     
     func getIsochrone(onSuccess: @escaping ([Feature]) -> Void) {
         print("IsochroneModel: \(#function)")
+        
+        /*
+         this section is for the public transportation functionality primarily. Most of the itme you are checking where you can go to at your current time. it is easy to implement a separate time picker but that is currently not a feature.
+         */
         print("Date: \(Date())")
-        var date = Date()
-        var dateFormatter = DateFormatter()
+        let date = Date()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ss'Z'"
         let dateString = dateFormatter.string(from: date)
         print("Date Formatted: \(dateString)")
@@ -120,7 +124,7 @@ class IsochroneModel {
                 return
             }
 //            let json = String(data: data!, encoding: .utf8)
-//            print(json!)
+//            print("JSON: \(json!)")
             if let data = data {
 //                print("   \(#function): Data: \(String(describing:data))")
                 do {

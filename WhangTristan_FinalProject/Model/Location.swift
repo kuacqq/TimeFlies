@@ -8,32 +8,17 @@
 import Foundation
 
 
-
+/*
+ A location to be stored consists of its latitude and longitude coordinates and the amount of time spent at that location, in seconds. It is possible to reverse geocode these coordinates for addresses but doesn't add anything in terms of technical functionality but would be included in a final version that would be shipped to consumers.
+ */
 struct Location: Codable {
     var longitude: Double
     var latitude: Double
-    
-    // This should just be the time and
-    // routeModel should hold the actual day
-    // so that it can be represented.
-//    var hoursSpent: Int
-//    var minutesSpent: Int
-    
-    // for testing purposes
     var secondsSpent: Int
     
-//    init(_ longitude: Double, _ latitude: Double, _ hoursSpent: Int, _ minutesSpent: Int) {
-//        self.longitude = longitude
-//        self.latitude = latitude
-//        self.hoursSpent = hoursSpent
-//        self.minutesSpent = minutesSpent
-//        self.secondsSpent = 0
-//    }
     init(_ longitude: Double, _ latitude: Double, _ secondsSpent: Int) {
         self.longitude = longitude
         self.latitude = latitude
-//        self.hoursSpent = 0
-//        self.minutesSpent = 0
         self.secondsSpent = secondsSpent
     }
 }

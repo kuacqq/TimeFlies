@@ -49,7 +49,7 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     // The recenter button will either recenter on your current location or on the first recorded location of the date that you picked in the datePicker.
     @IBAction func recenterButtonDidTapped(_ sender: Any) {
         print("MapRouteViewController: \(#function)")
-        let span = MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007)
+        let span = MKCoordinateSpan(latitudeDelta: 0.017, longitudeDelta: 0.017)
         if (!self.coordinateArray.isEmpty) {
             let region = MKCoordinateRegion(center: self.coordinateArray[0], span: span)
             mapView.setRegion(region, animated: true)
@@ -122,7 +122,7 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         print("MapRouteViewController: \(#function)")
         if (overlay is MKPolyline) {
             let polyLineRender = MKPolylineRenderer(overlay: overlay)
-            polyLineRender.strokeColor = UIColor.purple.withAlphaComponent(0.5)
+            polyLineRender.strokeColor = UIColor.systemBlue.withAlphaComponent(0.7)
             polyLineRender.lineWidth = 5
             return polyLineRender
         }
@@ -160,8 +160,7 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
          There are simple ways to get around this but this feature is just not currently implemented.
          */
         self.lastTimeMeasurement = currentTime
-        
-        
+
         // minimum time spent is the amount of time that you need to spend in an area before the progam will record this and place it on the map
         var minimumTimeSpent: Double = 0
         if (route.testingMode == true) {
@@ -178,15 +177,14 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         }
     }
     
-    
+    // This is a required function to deal with errors from the locationManager
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("MapRouteViewController: \(#function)")
         print("   \(error.localizedDescription)")
     }
 
     /*
-     this is the method that is called when the location authorization
-     changes
+     This method deals with the case where location authorization has changed 
      */
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         print("MapRouteViewController: \(#function)")
@@ -200,6 +198,7 @@ class MapRouteViewController: UIViewController, MKMapViewDelegate, CLLocationMan
         }
     }
    
+    // When the date pickers value has changed this tells the map view to reload and display the route on the day that you have chosen. The first location in this route will be the point around which the realign button will center around.
     @IBAction func datePickerValueDidChange(_ sender: UIDatePicker) {
         removeAllPolyLines()
         print("MapRouteViewController: \(#function)")

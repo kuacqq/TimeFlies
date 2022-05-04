@@ -8,6 +8,9 @@
 import Foundation
 import CoreLocation
 
+/*
+ The route model what is primarily stored and used in the travelRecordViewController and the mapRouteViewController. The routeModel is the object which contains the all the information aout what day to display and holds the map of location arrays that whose keys are of type datecomponent. Basically, every date has an associated location array within the locationMap which can be retrieved by chaning the datePickers.
+ */
 class RouteModel: NSObject {
     static let shared = RouteModel()
     var testingMode: Bool = false
@@ -52,10 +55,8 @@ class RouteModel: NSObject {
         print("   \(self.today)")
         if let locationMap = self.locationMap {
             if let _ = locationMap[self.today], let locationArray = self.locationArray {
-                print("\(#function): if")
                 self.locationMap![self.today]!.append(contentsOf: locationArray)
             } else {
-                print("\(#function): else")
                 self.locationMap![self.today] = locationArray
             }
         } else {
@@ -115,7 +116,7 @@ class RouteModel: NSObject {
     }
     
     /*
-     Testing Method
+     Testing Method - just sets up a test array for april first so you can see the date picker functionality.
      */
     func setTestArray() {
         print("Route Model: \(#function)")

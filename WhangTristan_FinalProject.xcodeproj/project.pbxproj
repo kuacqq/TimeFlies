@@ -24,7 +24,6 @@
 		EAEA5B9C280136EA00A7AC7C /* MapRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B9B280136EA00A7AC7C /* MapRouteViewController.swift */; };
 		EAEA5BA0280254DF00A7AC7C /* IsochroneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5B9F280254DF00A7AC7C /* IsochroneViewController.swift */; };
 		EAEA5BA2280254F100A7AC7C /* IsochroneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5BA1280254F100A7AC7C /* IsochroneModel.swift */; };
-		EAEA5BAA280271E300A7AC7C /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5BA9280271E300A7AC7C /* Results.swift */; };
 		EAEA5BAE2803908F00A7AC7C /* Output.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5BAD2803908F00A7AC7C /* Output.swift */; };
 		EAEA5BB02804D81000A7AC7C /* input_isochroneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA5BAF2804D81000A7AC7C /* input_isochroneViewController.swift */; };
 		EAEB9358280A448A0055A442 /* GeocodingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB9357280A448A0055A442 /* GeocodingModel.swift */; };
@@ -75,7 +74,6 @@
 		EAEA5B9B280136EA00A7AC7C /* MapRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRouteViewController.swift; sourceTree = "<group>"; };
 		EAEA5B9F280254DF00A7AC7C /* IsochroneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsochroneViewController.swift; sourceTree = "<group>"; };
 		EAEA5BA1280254F100A7AC7C /* IsochroneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsochroneModel.swift; sourceTree = "<group>"; };
-		EAEA5BA9280271E300A7AC7C /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		EAEA5BAD2803908F00A7AC7C /* Output.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Output.swift; sourceTree = "<group>"; };
 		EAEA5BAF2804D81000A7AC7C /* input_isochroneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = input_isochroneViewController.swift; sourceTree = "<group>"; };
 		EAEB9357280A448A0055A442 /* GeocodingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocodingModel.swift; sourceTree = "<group>"; };
@@ -192,7 +190,6 @@
 				EAEA5B952800B6FF00A7AC7C /* Location.swift */,
 				EAEA5B972800B7DB00A7AC7C /* RouteModel.swift */,
 				EAEA5BA1280254F100A7AC7C /* IsochroneModel.swift */,
-				EAEA5BA9280271E300A7AC7C /* Results.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -338,7 +335,6 @@
 				EAEB9358280A448A0055A442 /* GeocodingModel.swift in Sources */,
 				EAEA5B612800B37A00A7AC7C /* AppDelegate.swift in Sources */,
 				EAEA5B9C280136EA00A7AC7C /* MapRouteViewController.swift in Sources */,
-				EAEA5BAA280271E300A7AC7C /* Results.swift in Sources */,
 				EAEA5B982800B7DB00A7AC7C /* RouteModel.swift in Sources */,
 				EAEA5B632800B37A00A7AC7C /* SceneDelegate.swift in Sources */,
 				EAEA5BAE2803908F00A7AC7C /* Output.swift in Sources */,

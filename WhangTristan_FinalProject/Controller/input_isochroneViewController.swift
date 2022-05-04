@@ -8,6 +8,9 @@
 import UIKit
 import CoreLocation
 
+/*
+ The input isochrone view controller is how you change the parameters for a call to the travel time api. You enter an amount of availible time, mode of transport, and an address which is then geocoded when you press done. After you transition back to the isochroneViewController, the new isochrone is displayed.
+ */
 class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     let sharedGeocodingModel = GeocodingModel.shared
     @IBOutlet weak var addressTextField: UITextField!
@@ -15,7 +18,7 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var holderView: UIView!
     
-    
+    // the only initial setup that needs to be done is localizing the buttons and labels.
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -23,20 +26,18 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
         localizeLabels()
         localizeButtons()
     }
+    
+    // this viewWillAppear is for future use like if you want to store and review the settings of your last isochrone.
     override func viewWillAppear(_ animated: Bool) {
-        
     }
-//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-//        if text == "\n" {
-//            self.answerTextField.becomeFirstResponder()
-//        }
-//        return true
-//    }
+
+    // textFieldShouldReturn just resigns the keyboard from the address text field when you press return.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
     
+    // When you press the done bar button item this function triggers. It basically changes all the properties that relate to making the travel time api call which is then invoked in the isochrone view controller. It also checks if the text field is empty. if it is empty you cannot use the done button to go back to the previous VC.
     @IBAction func doneButtonDidPressed(_ sender: Any) {
         print("input_isochroneViewController: \(#function):")
         if (addressTextField.text != "") {
@@ -47,30 +48,16 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
 
             let travelTimeCalculated: Int = ((hourValue * 60) + minValue) * 60
             
-//            geocodeAddress(addressInput: addressTextField.text!)
             IsochroneModel.shared.inputAddress = addressTextField.text!
             IsochroneModel.shared.setTime(travelTime: travelTimeCalculated)
             IsochroneModel.shared.setModeOfTransport(mode: JSON_TRANSPORT_MODE_ARRAY[pickerView.selectedRow(inComponent: 0)])
             
             navigationController?.popViewController(animated: true)
-//            self.dismiss(animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "No address entered", message: "Please enter a new address to load a new isochone.", preferredStyle: .alert)
             let okayAction = UIAlertAction(title: "Okay", style: .default)
             alert.addAction(okayAction)
             present(alert, animated: true, completion: nil)
-        }
-        
-    }
-
-    func geocodeAddress(addressInput: String) {
-        sharedGeocodingModel.setAddress(input: addressInput)
-        self.sharedGeocodingModel.geocode { i in
-            DispatchQueue.main.async {
-                self.sharedGeocodingModel.outputCoordinates = i
-                IsochroneModel.shared.setLatLong(lat: self.sharedGeocodingModel.outputCoordinates.latitude, lng: self.sharedGeocodingModel.outputCoordinates.longitude)
-            }
-            
         }
     }
     
@@ -80,9 +67,9 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
     let HOUR_COMPONENT_INDEX = 0
     let MINUTE_COMPONENT_INDEX = 1
     
-    
     /*
      modeOfTransportPicker functinos and attributes
+     The transport mode array is what you actually see as the strings in the picker view but the json version contains the actual corresponding text that is needed to make the api call.
      */
     let TRANSPORT_MODE_ARRAY = [NSLocalizedString("cycling_text", comment: ""),
                                 NSLocalizedString("driving_text", comment: ""),
@@ -100,6 +87,9 @@ class input_isochroneViewController: UIViewController, UIPickerViewDelegate, UIP
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return TRANSPORT_MODE_ARRAY[row]
+    }
+    @IBAction func backgroundButtonDidTapped(_ sender: Any) {
+        self.addressTextField.resignFirstResponder()
     }
     
     

@@ -7,6 +7,9 @@
 
 import Foundation
 
+/*
+ This set of objects is to decode the response from the google places api. This is primarily currently used for getting the longitude and latitude coordinates of an address entered in the input isochrone vc. 
+ */
 struct GeocodeResponse : Codable {
     var results: [GeocodeResult]
     var status: String

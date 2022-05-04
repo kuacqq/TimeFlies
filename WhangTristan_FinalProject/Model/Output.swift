@@ -7,7 +7,9 @@
 
 import Foundation
 
-// MARK: - Welcome
+/*
+ This set of structs are used to decode the time travel api response. As mentioned elsewhere, this does not actually follow the response given as an example on their website so it may have to be restructured in the future.
+ */
 struct Welcome: Codable {
     let type: String
     let features: [Feature]

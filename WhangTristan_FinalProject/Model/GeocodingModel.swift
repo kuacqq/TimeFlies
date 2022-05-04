@@ -8,6 +8,9 @@
 import Foundation
 import CoreLocation
 
+/*
+ The geocoding model is the object which handles the api call to google places. It uses a singleton as there is only one location that needs to be geocoded at a time. This parses the data and stores the coordinates for the center of the generated isochrone. It is called and the on success closure is in isochroneViewController.
+ */
 public class GeocodingModel {
     static let shared = GeocodingModel()
     
@@ -21,7 +24,6 @@ public class GeocodingModel {
         self.address_input = input
     }
     func geocode(onSuccess: @escaping(CLLocationCoordinate2D) -> Void) {
-//    func geocode(){
         print("Geocoding Model : \(#function)")
         var addressString: String = ""
         if (address_input != "") {
@@ -41,14 +43,11 @@ public class GeocodingModel {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         URLSession.shared.dataTask(with: request){ data, response, error in
-            
             if let error = error {
                 print("   geocoding interior error")
                 print(error.localizedDescription)
                 return
             }
-//            let json = String(data: data!, encoding: .utf8)
-//            print("   Geocoding Model: JSON: ", json!)
             if let data = data {
                 do {
                     let output = try JSONDecoder().decode(GeocodeResponse.self, from: data)
